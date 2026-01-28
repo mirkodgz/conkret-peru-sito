@@ -1,9 +1,7 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
 import { MotionPreset } from '@/components/ui/MotionPreset'
 import { BorderBeam } from '@/components/ui/BorderBeam'
-import { cn } from '@/lib/utils'
 
 const featureData = [
     {
@@ -31,27 +29,28 @@ const featureData = [
 
 export default function FeaturesPremium() {
     return (
-        <section className='overflow-hidden py-24 sm:py-32 bg-[#fafafa]'>
-            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                {/* Header - Strictly centered as per target image */}
-                <div className='mb-20 space-y-4 text-center max-w-4xl mx-auto'>
+        <section className='w-full flex justify-center py-24 sm:py-32 bg-[#fafafa]'>
+            <div className='w-full max-w-[1400px] px-6 lg:px-12 flex flex-col items-center'>
+                {/* Header - Centered */}
+                <div className='mb-32 space-y-8 text-center max-w-5xl mx-auto'>
                     <MotionPreset fade blur slide={{ direction: 'up', offset: 20 }} transition={{ duration: 0.5 }}>
-                        <div className='text-primary text-sm font-black uppercase tracking-[0.25em]'>Nuestros Diferenciales</div>
+                        <div className='text-primary text-sm font-black uppercase tracking-[0.3em]'>Nuestros Diferenciales</div>
                     </MotionPreset>
                     <MotionPreset
                         component='h2'
-                        className='text-4xl font-black md:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.1]'
+                        className='text-5xl font-black md:text-6xl lg:text-8xl text-slate-900 tracking-tight leading-[1.05]'
                         fade
                         blur
                         slide={{ direction: 'up', offset: 30 }}
                         delay={0.2}
                         transition={{ duration: 0.5 }}
                     >
-                        Maximiza el potencial de tu obra con <span className="text-primary">CONKRET</span>
+                        Maximiza el potencial de tu obra con <span className="text-primary italic">CONKRET</span>
                     </MotionPreset>
                 </div>
 
-                <div className='grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'>
+                {/* Grid Container - Centered */}
+                <div className='grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3 w-full justify-items-center'>
                     {featureData.map((item, index) => (
                         <MotionPreset
                             key={item.title}
@@ -60,44 +59,34 @@ export default function FeaturesPremium() {
                             blur
                             delay={0.3 + 0.1 * index}
                             transition={{ duration: 0.7 }}
-                            className="h-full"
+                            className="h-full w-full flex justify-center"
                         >
-                            <div className='h-full group relative bg-white border border-slate-200 rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col'>
-                                {/* Dual BorderBeam Effect for premium touch */}
+                            <div className='h-full w-full max-w-[420px] group relative bg-white border border-slate-200 rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col text-center items-center'>
+                                {/* Secondary BorderBeam for dual effect */}
                                 <BorderBeam
                                     duration={8}
-                                    size={300}
+                                    size={400}
                                     borderWidth={2}
                                     colorFrom="#e40323"
                                     colorTo="#b3021b"
                                     className='opacity-0 group-hover:opacity-100 transition-opacity duration-500'
                                 />
 
-                                <div className='p-8 flex flex-col gap-8 grow relative z-10'>
-                                    {/* Image Container - Matches target's boxed style */}
-                                    <div className='bg-[#f3f4f6] flex h-56 w-full flex-col items-center justify-center overflow-hidden rounded-xl relative'>
+                                <div className='p-14 flex flex-col gap-14 grow relative z-10 w-full'>
+                                    {/* Image Container */}
+                                    <div className='bg-[#f3f4f6] flex h-72 w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] relative shadow-inner'>
                                         <img
                                             src={item.src}
                                             alt={item.title}
-                                            className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
+                                            className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110'
                                         />
                                     </div>
 
-                                    <div className='space-y-4'>
-                                        <p className='text-slate-500 text-sm font-semibold uppercase tracking-wider'>{item.subTitle}</p>
-                                        <h3 className='text-2xl font-black text-slate-900 leading-tight'> {item.title}</h3>
-                                        <p className='text-slate-600 leading-relaxed text-base font-medium'>{item.description}</p>
+                                    <div className='space-y-10 flex flex-col items-center'>
+                                        <p className='text-slate-400 text-xs font-black uppercase tracking-[0.3em]'>{item.subTitle}</p>
+                                        <h3 className='text-4xl font-black text-slate-900 leading-tight px-2'> {item.title}</h3>
+                                        <p className='text-slate-500 leading-relaxed text-xl font-medium px-4'>{item.description}</p>
                                     </div>
-                                </div>
-
-                                <div className="p-8 pt-0 relative z-10">
-                                    <a
-                                        href={item.href}
-                                        className="inline-flex items-center justify-center gap-3 bg-secondary text-white px-8 py-3.5 rounded-xl font-black text-sm hover:bg-primary transition-all duration-300 w-fit shadow-lg shadow-slate-200"
-                                    >
-                                        Saber más
-                                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                                    </a>
                                 </div>
                             </div>
                         </MotionPreset>

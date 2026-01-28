@@ -7,20 +7,20 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FAQAccordion from "../../components/FAQAccordion.astro";
 import "../../styles/global.css";
 
-const productTitle = "Concreto Premezclado f'c 175 kg/cm²";
+const productTitle = "Concreto Listo 175";
 const productDescription =
-    "Concreto diseñado para elementos no estructurales como veredas, sardineles y falsos pisos. Garantiza durabilidad y resistencia al desgaste peatonal.";
+    "Es una mezcla de concreto preelaborado, diseñada para proyectos que requieren una resistencia básica. Es versátil y fácil de manejar, ideal para obras de menor exigencia estructural. Este producto se caracteriza por su calidad consistente, asegurando un acabado uniforme y duradero.";
 
 const breadcrumbItems = [
     { label: "Productos", href: "/productos/" },
     { label: "Concreto Listo", href: "/concreto-listo/" },
-    { label: "f'c 175 kg/cm²" },
+    { label: "Concreto Listo 175" },
 ];
 
 const faqs = [
     {
-        question: "¿Puedo usar concreto 175 para columnas?",
-        answer: "No. Según la Norma E.060, el mínimo para elementos estructurales sismorresistentes (columnas, vigas, techos) es 210 kg/cm². El 175 es para pisos y veredas.",
+        question: "¿Para qué puede ser usado?",
+        answer: "Es perfecto para cimentaciones simples, pisos peatonales, senderos, banquetas, soleras y trabajos en espacios residenciales donde no se necesiten cargas significativas.",
     },
     {
         question: "¿Es bombeable?",
@@ -100,14 +100,35 @@ const productSchema = {
         <section class="section bg-light">
             <div class="container-small">
                 <h2 class="text-center">Aplicaciones Recomendadas</h2>
-                <div class="specs-grid mt-4">
+                <div class="grid md:grid-cols-2 gap-8 mt-4">
                     <div class="card-white p-4">
-                        <h3>Ideal para:</h3>
+                        <h3>¿Para qué puede ser usado?</h3>
                         <ul class="check-list">
-                            <li>Veredas y sardineles.</li>
-                            <li>Falsos pisos y contrapisos.</li>
-                            <li>Solados para zapatas.</li>
-                            <li>Muros de gravedad (no portantes).</li>
+                            <li>Cimentaciones simples y soleras.</li>
+                            <li>Pisos peatonales y senderos.</li>
+                            <li>Banquetas y trabajos residenciales ligeros.</li>
+                            <li>
+                                Espacios que no requieran cargas significativas.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-white p-4">
+                        <h3>Especificaciones y Rendimiento</h3>
+                        <ul class="check-list">
+                            <li>
+                                <strong>Resistencia:</strong> 175 kg/cm², para baja
+                                intensidad.
+                            </li>
+                            <li>
+                                <strong>Tiempo de fraguado:</strong> Aprox. 24 horas.
+                            </li>
+                            <li>
+                                <strong>Componentes:</strong> Cemento y agregados
+                                calibrados.
+                            </li>
+                            <li>
+                                <strong>Durabilidad:</strong> Diseñado para uso moderado.
+                            </li>
                         </ul>
                     </div>
                 </div>
