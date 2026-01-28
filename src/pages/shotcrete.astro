@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAWhatsApp from "../components/CTAWhatsApp.astro";
+import "../styles/global.css";
+
+const title = "Shotcrete (Concreto Proyectado) | CONKRET";
+const description =
+    "Soluciones de Shotcrete para sostenimiento de túneles, estabilización de taludes y estructuras complejas. Concreto proyectado de alto desempeño.";
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container py-5">
+        <div class="shotcrete-header">
+            <h1>Shotcrete: Concreto Proyectado</h1>
+            <p class="lead">
+                Tecnología de proyección a alta presión para estabilización y
+                soporte estructural.
+            </p>
+        </div>
+
+        <section class="shotcrete-content">
+            <div class="shotcrete-grid">
+                <div class="content-text">
+                    <h2>¿Qué es el Shotcrete?</h2>
+                    <p>
+                        El Shotcrete es un sistema de colocación de concreto por
+                        proyección a través de una manguera de alta presión. Es
+                        indispensable en obras subterráneas, minería y
+                        estabilización de taludes donde el encofrado tradicional
+                        es inviable.
+                    </p>
+
+                    <h3>Nuestras Variantes</h3>
+                    <ul>
+                        <li>
+                            <strong>Vía Húmeda:</strong> Mezcla lista desde planta,
+                            ideal para grandes volúmenes y mayor control de calidad.
+                        </li>
+                        <li>
+                            <strong>Vía Seca:</strong> Dosificación neumática con
+                            agregado de agua en la boquilla.
+                        </li>
+                    </ul>
+                </div>
+                <div class="image-box">
+                    <img
+                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp"
+                        alt="Aplicación de Shotcrete"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-banner mt-4">
+            <h3>Soporte Técnico Especializado</h3>
+            <p>
+                Consultar disponibilidad de equipos y diseño de mezclas
+                especiales para su proyecto.
+            </p>
+            <a
+                href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20informacion%20sobre%20Shotcrete"
+                class="btn-primary">Consultar con un Experto</a
+            >
+        </div>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-5 {
+        padding: 4rem 0;
+    }
+    .shotcrete-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    .shotcrete-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #666;
+    }
+    .content-text h2 {
+        margin-bottom: 1.5rem;
+    }
+    .content-text p {
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.8;
+    }
+    .content-text ul {
+        padding-left: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    .content-text li {
+        margin-bottom: 1rem;
+    }
+    .image-box img {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .cta-banner {
+        background: #f4f4f4;
+        padding: 3rem;
+        text-align: center;
+        border-radius: 12px;
+    }
+    .mt-4 {
+        margin-top: 4rem;
+    }
+
+    @media (max-width: 992px) {
+        .shotcrete-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

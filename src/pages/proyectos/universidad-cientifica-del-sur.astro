@@ -1,0 +1,216 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import "../../styles/global.css";
+
+const projectTitle = "Universidad Científica del Sur - Sede Villa";
+const projectSubtitle =
+    "Suministro de concreto estructural para la ampliación de infraestructura educativa.";
+const projectDescription =
+    "Participamos en la expansión de la Sede Villa de la Universidad Científica del Sur (UCSUR), garantizando la máxima durabilidad y resistencia en un entorno costero exigente.";
+
+const breadcrumbItems = [
+    { label: "Proyectos", href: "/proyectos/" },
+    { label: "Universidad Científica del Sur" },
+];
+
+const highlights = [
+    {
+        title: "Alta Resistencia",
+        text: "Uso de concreto f'c 210 y 280 kg/cm² para estructuras de varios niveles.",
+    },
+    {
+        title: "Ambiente Salino",
+        text: "Mezclas diseñadas con baja permeabilidad para resistir la corrosión marina de Villa.",
+    },
+    {
+        title: "Vaciados Masivos",
+        text: "Coordinación logística para entregas continuas, asegurando la homogeneidad estructural.",
+    },
+];
+---
+
+<Layout
+    title="Proyecto Universidad Científica del Sur | CONKRET"
+    description="Ampliación de la Sede Villa de la UCSUR con concreto premezclado CONKRET. Soluciones estructurales para edificaciones educativas en entornos costeros."
+>
+    <Header />
+
+    <main class="container py-5">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="project-hero grid-2 mt-4">
+            <div class="project-info">
+                <span class="badge">Infraestructura Educativa</span>
+                <h1>{projectTitle}</h1>
+                <p class="lead">{projectSubtitle}</p>
+                <div class="project-summary-box">
+                    <div class="summary-item">
+                        <strong>Ubicación:</strong>
+                        <span>Chorrillos (Villa), Lima</span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Producto:</strong>
+                        <span>Concreto Premezclado f'c 210 / 280</span>
+                    </div>
+                </div>
+                <div class="actions mt-4">
+                    <a
+                        href="https://wa.me/51972047903?text=Hola,%20vi%20su%20proyecto%20de%20la%20Cientifica%20y%20deseo%20cotizar"
+                        class="btn-primary">Cotizar para Edificaciones</a
+                    >
+                </div>
+            </div>
+            <div class="project-visual">
+                <img
+                    src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563514/CIENTIFICA_gwjjbb.webp"
+                    alt="Ampliación Universidad Científica del Sur Sede Villa - CONKRET"
+                    class="rounded-lg shadow-lg main-project-img"
+                />
+            </div>
+        </section>
+
+        <section class="project-details section">
+            <div class="content-wrapper-narrow">
+                <h2>Cimentación y Estructura en el Corazón de Villa</h2>
+                <p>
+                    La ampliación de la **Sede Villa de la Universidad
+                    Científica del Sur** representa un desafío técnico debido a
+                    su proximidad al mar. En **CONKRET**, suministramos mezclas
+                    de concreto premezclado diseñadas específicamente para
+                    soportar los ataques de sulfatos y cloruros típicos de las
+                    zonas costeras de Chorrillos.
+                </p>
+                <p>
+                    Nuestra participación se centró en el suministro de concreto
+                    para **zapatas, columnas y losas aligeradas**, utilizando
+                    aditivos de última generación que garantizan una excelente
+                    trabajabilidad y un acabado final que reduce las
+                    microfisuras por contracción plástica.
+                </p>
+
+                <div class="highlights-grid mt-4">
+                    {
+                        highlights.map((h) => (
+                            <div class="highlight-card">
+                                <h3>{h.title}</h3>
+                                <p>{h.text}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light rounded-2">
+            <div class="container text-center">
+                <h2>¿Proyectando una obra en zona costera?</h2>
+                <p class="mb-4 text-muted">
+                    Contamos con mezclas de alta durabilidad para entornos
+                    difíciles.
+                </p>
+                <a href="https://wa.me/51972047903" class="btn-primary lg"
+                    >Consultar Mezclas Especiales</a
+                >
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-5 {
+        padding: 4rem 0;
+    }
+    .mt-4 {
+        margin-top: 2rem;
+    }
+    .mb-4 {
+        margin-bottom: 2rem;
+    }
+
+    .badge {
+        background: rgba(228, 3, 35, 0.1);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-summary-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+
+    .summary-item strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+        text-transform: uppercase;
+        margin-bottom: 0.25rem;
+    }
+
+    .main-project-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .content-wrapper-narrow {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .highlight-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--color-primary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .highlight-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .highlight-card p {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 0;
+    }
+
+    .btn-primary.lg {
+        padding: 1.25rem 3rem;
+        font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .project-hero {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+</style>

@@ -1,0 +1,68 @@
+---
+interface Props {
+    faqs: { question: string; answer: string }[];
+}
+
+const { faqs } = Astro.props;
+
+// Schema.org JSON-LD for FAQPage
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+        },
+    })),
+};
+---
+
+<div class="faq-accordion">
+    {
+        faqs.map((faq, index) => (
+            <details class="faq-item">
+                <summary>{faq.question}</summary>
+                <div class="faq-answer">
+                    <p>{faq.answer}</p>
+                </div>
+            </details>
+        ))
+    }
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+    .faq-accordion {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+    .faq-item {
+        border-bottom: 1px solid #ddd;
+        padding: 1rem 0;
+    }
+    .faq-item summary {
+        font-weight: 400;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+    }
+    .faq-item summary::after {
+        content: "+";
+        color: var(--color-primary);
+        font-size: 1.5rem;
+    }
+    .faq-item[open] summary::after {
+        content: "-";
+    }
+    .faq-answer {
+        padding: 1rem 0;
+        color: #444;
+    }
+</style>

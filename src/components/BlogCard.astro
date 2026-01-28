@@ -1,0 +1,231 @@
+---
+const { post } = Astro.props;
+const { title, description, pubDate, image, tags } = post.data;
+const slug = post.slug;
+
+const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+---
+
+<article class="blog-card">
+    <a href={`/blog/${slug}/`} class="card-link">
+        <div class="card-image">
+            <img
+                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp"
+                alt={title}
+                loading="lazy"
+            />
+            <div class="image-overlay">
+                <h3 class="overlay-title">{title}</h3>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-meta">
+                <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+                <span class="dot"></span>
+                <span class="author">CONKRET</span>
+            </div>
+            <h3 class="card-title">{title}</h3>
+            <p class="card-excerpt">{description}</p>
+
+            <div class="card-tags">
+                {
+                    tags
+                        .slice(0, 2)
+                        .map((tag: string) => <span class="tag">#{tag}</span>)
+                }
+            </div>
+
+            <span class="read-more"
+                >Leer más <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                        points="12 5 19 12 12 19"></polyline></svg
+                ></span
+            >
+        </div>
+    </a>
+</article>
+
+<style>
+    .blog-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+        border: 1px solid #f0f0f0;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow:
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: var(--color-primary);
+    }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card-image {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .card-image img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        transition: background 0.3s ease;
+    }
+
+    .overlay-title {
+        color: white !important;
+        font-size: 1.25rem;
+        text-align: center;
+        margin: 0;
+        font-weight: 800;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .blog-card:hover .image-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(228, 3, 35, 0.4) 0%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .card-meta {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 0.75rem;
+    }
+
+    .dot {
+        width: 4px;
+        height: 4px;
+        background: #ccc;
+        border-radius: 50%;
+        margin: 0 0.5rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+        font-weight: 700;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.2s;
+    }
+
+    .blog-card:hover .card-title {
+        color: var(--color-primary);
+    }
+
+    .card-excerpt {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+
+    .card-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--color-primary);
+        background: #fff1f2;
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+    }
+
+    .read-more {
+        font-weight: 700;
+        color: var(--color-primary);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: auto;
+    }
+
+    .read-more svg {
+        transition: transform 0.2s ease;
+    }
+
+    .blog-card:hover .read-more svg {
+        transform: translateX(4px);
+    }
+</style>

@@ -1,0 +1,174 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import FAQAccordion from "../../components/FAQAccordion.astro";
+import "../../styles/global.css";
+
+const products = [
+    {
+        title: "Concreto Listo f'c 175 kg/cm²",
+        description:
+            "Ideal para veredas, falsos pisos y elementos no estructurales.",
+        link: "/concreto-listo/175/",
+    },
+    {
+        title: "Concreto Listo f'c 210 kg/cm²",
+        description:
+            "La resistencia estándar para vigas, columnas y losos de viviendas.",
+        link: "/concreto-listo/210/",
+    },
+    {
+        title: "Mezcla Lista para Tarrajeo",
+        description:
+            "Asegura acabados uniformes y reduce el desperdicio en muros.",
+        link: "/mortero/tarrajeo/",
+    },
+    {
+        title: "Súper Mortero",
+        description:
+            "Mezcla de alta adherencia para asentado de ladrillo estructural.",
+        link: "/mortero/supermortero/",
+    },
+];
+
+const faqs = [
+    {
+        question: "¿Cómo se calcula el rendimiento del concreto?",
+        answer: "El rendimiento depende del volumen del elemento y el desperdicio estimado. Visite nuestra página de rendimiento para más detalles.",
+    },
+    {
+        question: "¿Cuál es el precio del m3 de concreto?",
+        answer: "El precio varía según la resistencia y la ubicación de la obra. Contáctenos para una cotización exacta.",
+    },
+];
+---
+
+<Layout title="Productos de Concreto y Mortero | Mezclas Listas">
+    <Header />
+
+    <main class="container py-5">
+        <h1 class="page-title">Catálogo de Productos CONKRET</h1>
+        <p class="lead">
+            Soluciones industriales para construcción: Mezclas secas y concreto
+            listo dosificado con precisión.
+        </p>
+
+        <section class="product-categories-listing">
+            <div class="category-block">
+                <h2>Concreto Listo (Premezclado)</h2>
+                <p>
+                    Concreto dosificado en planta con agregados seleccionados.
+                    Garantiza la resistencia estructural de tu obra.
+                </p>
+                <div class="product-grid">
+                    {
+                        products
+                            .slice(0, 2)
+                            .map((p) => (
+                                <ProductCard
+                                    title={p.title}
+                                    description={p.description}
+                                    image={`https://placehold.co/600x400/e40323/white?text=${p.title.replace(/ /g, "+")}`}
+                                    link={p.link}
+                                />
+                            ))
+                    }
+                </div>
+                <a href="/concreto-listo/" class="view-all"
+                    >Ver todo en Concreto &rarr;</a
+                >
+            </div>
+
+            <div class="category-block">
+                <h2>Morteros y Mezclas Secas</h2>
+                <p>
+                    Ahorra tiempo y reduce mermas con nuestras mezclas ensacadas
+                    listas para usar.
+                </p>
+                <div class="product-grid">
+                    {
+                        products
+                            .slice(2, 4)
+                            .map((p) => (
+                                <ProductCard
+                                    title={p.title}
+                                    description={p.description}
+                                    image={`https://placehold.co/600x400/e40323/white?text=${p.title.replace(/ /g, "+")}`}
+                                    link={p.link}
+                                />
+                            ))
+                    }
+                </div>
+                <a href="/mortero/" class="view-all"
+                    >Ver todo en Morteros &rarr;</a
+                >
+            </div>
+        </section>
+
+        <section class="faqs-section">
+            <h2 class="text-center">Preguntas Frecuentes sobre Productos</h2>
+            <FAQAccordion faqs={faqs} />
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-5 {
+        padding: 4rem 0;
+    }
+    .page-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #666;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+    }
+
+    .category-block {
+        margin-bottom: 6rem;
+    }
+    .category-block h2 {
+        font-size: 2rem;
+        border-left: 5px solid var(--color-primary);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .category-block p {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .view-all {
+        font-weight: bold;
+        color: var(--color-primary);
+    }
+
+    .faqs-section {
+        background: #f9f9f9;
+        padding: 4rem 2rem;
+        border-radius: 12px;
+        margin-top: 4rem;
+    }
+    .text-center {
+        text-align: center;
+    }
+</style>

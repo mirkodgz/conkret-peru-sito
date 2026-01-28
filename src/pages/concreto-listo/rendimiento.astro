@@ -1,0 +1,386 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import "../../styles/global.css";
+
+const title = "Calculadora de Rendimiento de Concreto m3 | Guía CONKRET";
+const description =
+    "Calcula el volumen de concreto para tu losa, viga o columna. Evita la falta de material o el exceso de merma con nuestra calculadora de m3 de concreto listo.";
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Concreto Listo", href: "/concreto-listo/" },
+    { label: "Calculadora de Rendimiento" },
+];
+
+const calculationTips = [
+    {
+        title: "Desperdicio Estándar",
+        desc: "Sugerimos añadir un 5% al volumen total para cubrir mermas en bomba, transporte y posibles variaciones en encofrados.",
+    },
+    {
+        title: "Encofrados Estancos",
+        desc: "Asegure que sus encofrados estén bien sellados. Las fugas de lechada no solo reducen el volumen final sino también la resistencia.",
+    },
+    {
+        title: "Mezclas Secas",
+        desc: "Recuerde que 1 m³ de concreto premezclado equivale aproximadamente a 50 bolsas de mezcla seca de 40kg.",
+    },
+];
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="section">
+            <div class="text-center">
+                <h1>Calculadora de Rendimiento</h1>
+                <p class="lead">
+                    Optimice su compra de concreto listo calculando el volumen
+                    exacto (m³) necesario para su estructura.
+                </p>
+            </div>
+
+            <div class="calculator-container mt-4 shadow-lg">
+                <div class="calculator-card">
+                    <h2>Cubicar Volumen de Concreto</h2>
+                    <p class="mb-4">
+                        Ingrese las dimensiones en metros para obtener el
+                        resultado estimado.
+                    </p>
+
+                    <div class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="largo">Largo (m)</label>
+                                <input
+                                    type="number"
+                                    id="largo"
+                                    step="0.01"
+                                    placeholder="Ej: 12.50"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="ancho">Ancho (m)</label>
+                                <input
+                                    type="number"
+                                    id="ancho"
+                                    step="0.01"
+                                    placeholder="Ej: 8.00"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="espesor">Espesor / Altura (m)</label
+                                >
+                                <input
+                                    type="number"
+                                    id="espesor"
+                                    step="0.01"
+                                    placeholder="Ej: 0.20"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="result-area bg-light" id="result-box">
+                            <span class="result-label">Volumen Estimado:</span>
+                            <span class="result-value"
+                                ><span id="total-m3">0.00</span> m³</span
+                            >
+                            <p class="result-note" id="total-with-waste">
+                                Incluyendo 5% desperdicio: 0.00 m³
+                            </p>
+                        </div>
+
+                        <div class="calc-actions">
+                            <button class="btn-primary" id="calculate-btn"
+                                >Calcular Ahora</button
+                            >
+                            <button class="btn-outline" id="reset-btn"
+                                >Limpiar</button
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-sidebar">
+                    <h3>Consejos de Cálculo</h3>
+                    <div class="tips-list">
+                        {
+                            calculationTips.map((tip) => (
+                                <div class="tip-item">
+                                    <strong>{tip.title}</strong>
+                                    <p>{tip.desc}</p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div class="cta-mini bg-dark text-white rounded">
+                        <p>¿Tus planos tienen formas complejas?</p>
+                        <a href="https://wa.me/TODO" class="btn-primary btn-sm"
+                            >Enviar planos a revisión</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid-2 align-center">
+                <div class="image-box shadow-md rounded overflow-hidden">
+                    <img
+                        src="https://placehold.co/800x600/e40323/white?text=Calculo+de+Mezclas"
+                        alt="Ingeniero calculando volumen de obra"
+                        loading="lazy"
+                    />
+                </div>
+                <div>
+                    <h2>Importancia de un buen metrado</h2>
+                    <p>
+                        Un error en el metrado puede significar detener el
+                        vaciado a mitad de camino ("quedarse corto") o pagar por
+                        material sobrante que no se utilizará. En CONKRET
+                        recomendamos siempre verificar dos veces las medidas en
+                        campo antes de confirmar el pedido.
+                    </p>
+                    <h3>Principales errores al cubicar:</h3>
+                    <ul class="custom-list">
+                        <li>
+                            No descontar espacios ocupados por tuberías grandes.
+                        </li>
+                        <li>
+                            No considerar el desnivel real del terreno en falsos
+                            pisos.
+                        </li>
+                        <li>
+                            Ignorar la expansión de los encofrados al recibir el
+                            peso del concreto.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const calculateBtn = document.getElementById("calculate-btn");
+        const resetBtn = document.getElementById("reset-btn");
+        const resultBox = document.getElementById("result-box");
+        const totalM3 = document.getElementById("total-m3");
+        const totalWithWaste = document.getElementById("total-with-waste");
+
+        const largoInput = document.getElementById("largo") as HTMLInputElement;
+        const anchoInput = document.getElementById("ancho") as HTMLInputElement;
+        const espesorInput = document.getElementById(
+            "espesor",
+        ) as HTMLInputElement;
+
+        calculateBtn?.addEventListener("click", () => {
+            const l = parseFloat(largoInput.value);
+            const a = parseFloat(anchoInput.value);
+            const e = parseFloat(espesorInput.value);
+
+            if (l > 0 && a > 0 && e > 0) {
+                const net = l * a * e;
+                const withWaste = net * 1.05;
+
+                if (totalM3) totalM3.innerText = net.toFixed(2);
+                if (totalWithWaste)
+                    totalWithWaste.innerText = `Incluyendo 5% desperdicio: ${withWaste.toFixed(2)} m³`;
+                resultBox?.classList.add("highlight-result");
+            } else {
+                alert("Por favor ingrese valores positivos mayores a cero.");
+            }
+        });
+
+        resetBtn?.addEventListener("click", () => {
+            largoInput.value = "";
+            anchoInput.value = "";
+            espesorInput.value = "";
+            if (totalM3) totalM3.innerText = "0.00";
+            if (totalWithWaste)
+                totalWithWaste.innerText = "Incluyendo 5% desperdicio: 0.00 m³";
+            resultBox?.classList.remove("highlight-result");
+        });
+    </script>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .mt-4 {
+        margin-top: 3rem;
+    }
+    .mb-4 {
+        margin-bottom: 2rem;
+    }
+    .calculator-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 0;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .calculator-card {
+        padding: 4rem;
+    }
+    .calc-form {
+        display: grid;
+        gap: 2rem;
+    }
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.75rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: border-color 0.2s;
+    }
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .result-area {
+        padding: 2.5rem;
+        border-radius: 12px;
+        text-align: center;
+        border: 2px dashed #ddd;
+        transition: all 0.3s;
+    }
+    .highlight-result {
+        background: #fff9f9;
+        border-color: var(--color-primary);
+        border-style: solid;
+    }
+    .result-label {
+        display: block;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+        margin-bottom: 0.5rem;
+    }
+    .result-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        display: block;
+    }
+    .result-note {
+        font-size: 0.95rem;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        color: #666;
+    }
+
+    .calc-actions {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .calc-sidebar {
+        background: #fdfdfd;
+        padding: 4rem 3rem;
+        border-left: 1px solid #eee;
+    }
+    .calc-sidebar h3 {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    .calc-sidebar h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 3px;
+        background: var(--color-primary);
+    }
+    .tip-item {
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+    .tip-item strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    .tip-item p {
+        color: #666;
+        margin-bottom: 0;
+    }
+
+    .cta-mini {
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .cta-mini p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .bg-dark {
+        background: #1a1a1a;
+    }
+    .btn-sm {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .custom-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .custom-list li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .custom-list li::before {
+        content: "×";
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 1024px) {
+        .calculator-container {
+            grid-template-columns: 1fr;
+        }
+        .calc-sidebar {
+            border-left: none;
+            border-top: 1px solid #eee;
+        }
+    }
+    @media (max-width: 768px) {
+        .calculator-card {
+            padding: 2rem;
+        }
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAWhatsApp from "../components/CTAWhatsApp.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import Preloader from "../components/Preloader.astro";
+import FeaturesPremium from "../components/FeaturesPremium";
+import "../styles/global.css";
+
+const faqs = [
+	{
+		question: "¿Qué tipos de concreto ofrecen?",
+		answer: "Ofrecemos concreto premezclado de diversas resistencias, desde f'c 175 kg/cm² hasta f'c 350 kg/cm², adaptados a las necesidades de su proyecto.",
+	},
+	{
+		question: "¿Hacen entregas en todo Lima?",
+		answer: "Sí, contamos con una amplia red logística para abastecer proyectos de construcción en todo Lima Metropolitana y alrededores.",
+	},
+	{
+		question: "¿Cuál es la ventaja de usar mezclas secas?",
+		answer: "Nuestras mezclas secas reducen la merma en obra, garantizan una dosificación exacta y ahorran tiempo significativo en la preparación.",
+	},
+];
+---
+
+<Layout
+	title="Concreto Premezclado y Mezclas Secas en Perú"
+	description="Expertos en Concreto Premezclado, Mortero y Mezclas Secas en todo Lima. Calidad certificada, despacho puntual y el mejor precio por m3 para su obra."
+>
+	<Preloader />
+	<Header />
+
+	<main>
+		<!-- Hero Section -->
+		<section class="hero py-32 bg-light">
+			<div class="container grid md:grid-cols-2 gap-16 items-center">
+				<div class="hero-text animate-fade-up">
+					<h1 class="mb-8 font-black">
+						Expertos en Concreto Listo y Soluciones Constructivas en
+						Perú
+					</h1>
+					<p class="mb-12 text-lg opacity-80">
+						Optimiza tu obra con el mejor Concreto Premezclado,
+						Mortero y Mezclas Secas. Máxima calidad, menor merma y
+						mayor rendimiento estructural.
+					</p>
+					<div class="hero-actions flex gap-6 mt-4">
+						<a href="/productos/" class="btn-primary"
+							>Ver Productos</a
+						>
+						<a
+							href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar"
+							class="btn-outline">Cotizar Ahora</a
+						>
+					</div>
+				</div>
+				<div
+					class="hero-image relative rounded-3xl overflow-hidden shadow-2xl"
+				>
+					<img
+						src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562772/conkret-peru-hero_vtmbcr.webp"
+						alt="CONKRET en obra - Concreto Premezclado"
+						class="w-full h-full object-cover block"
+						loading="eager"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Categories / Products Section -->
+		<section class="section py-32">
+			<div class="container text-center">
+				<h2 class="mb-16">Nuestras Categorías</h2>
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+					<ProductCard
+						title="Concreto Listo"
+						description="Concreto premezclado de alta resistencia para todo tipo de estructuras y cimentaciones."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp"
+						link="/concreto-listo/"
+					/>
+					<ProductCard
+						title="Morteros"
+						description="Mezclas listas para tarrajeo, asentado de ladrillo y acabados de precisión."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp"
+						link="/mortero/"
+					/>
+					<ProductCard
+						title="Mezclas Especiales"
+						description="Soluciones técnicas como Shotcrete y concretos de alto desempeño estructural."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp"
+						link="/shotcrete/"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Premium Features Section -->
+		<FeaturesPremium client:load />
+
+		<!-- Results / Impact Section -->
+		<section class="impact py-28 bg-dark text-white text-center">
+			<div
+				class="container flex flex-col md:flex-row justify-between items-center gap-16"
+			>
+				<div class="impact-stat">
+					<span class="stat-number">10+</span>
+					<span class="stat-label">Años de Experiencia</span>
+				</div>
+				<div class="impact-stat">
+					<span class="stat-number">500+</span>
+					<span class="stat-label">Proyectos Atendidos</span>
+				</div>
+				<div class="impact-stat">
+					<span class="stat-number">1M+</span>
+					<span class="stat-label">m³ de Concreto</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured Projects -->
+		<section class="section py-32">
+			<div class="container">
+				<h2 class="mb-16 text-center">Proyectos Destacados</h2>
+				<div class="grid md:grid-cols-2 gap-16">
+					<ProjectCard
+						title="Parque Arauco La Molina"
+						description="Suministro de mezclas especiales para la etapa de acabados del Centro Comercial."
+						location="La Molina, Lima"
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563449/Proyecto-Parque-Arauco-La-Molina_arjw0h.webp"
+						link="/proyectos/parque-arauco-la-molina/"
+					/>
+					<ProjectCard
+						title="Mega Puerto de Chancay"
+						description="Suministro logístico y especializado para construcciones paralelas en el puerto."
+						location="Chancay, Huaral"
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563597/CHANCAY_nycsif.webp"
+						link="/proyectos/mega-puerto-chancay/"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<TestimonialsSection />
+	</main>
+
+	<Footer />
+	<CTAWhatsApp />
+</Layout>
+
+<style>
+	.hero {
+		background-color: #f9f9f9;
+	}
+	.btn-outline {
+		border: 2px solid var(--color-primary);
+		color: var(--color-primary);
+		padding: 1rem 2.5rem;
+		border-radius: 8px;
+		font-weight: 700;
+		transition: all 0.2s;
+	}
+	.btn-outline:hover {
+		background-color: var(--color-primary);
+		color: white;
+	}
+	.hero-text h1 {
+		color: #1a1a1a;
+		line-height: 1.1;
+	}
+	.bg-dark {
+		background-color: #0c1116;
+	}
+	.stat-number {
+		display: block;
+		font-size: 4.5rem;
+		font-weight: 900;
+		color: var(--color-primary);
+		line-height: 1;
+		margin-bottom: 0.5rem;
+	}
+	.stat-label {
+		text-transform: uppercase;
+		font-size: 0.85rem;
+		letter-spacing: 2px;
+		font-weight: 700;
+		opacity: 0.7;
+	}
+
+	@media (max-width: 992px) {
+		.hero-text h1 {
+			font-size: 2.8rem;
+		}
+	}
+	@media (max-width: 768px) {
+		.stat-number {
+			font-size: 3.5rem;
+		}
+	}
+</style>

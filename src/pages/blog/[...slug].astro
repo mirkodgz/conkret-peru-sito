@@ -1,0 +1,412 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import BlogSEO from "../../components/BlogSEO.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+const { title, description, pubDate, image, tags } = entry.data;
+
+// Get related posts (same tags, excluding current)
+const allPosts = await getCollection("blog");
+const relatedPosts = allPosts
+    .filter(
+        (p) =>
+            p.slug !== entry.slug && p.data.tags.some((t) => tags.includes(t)),
+    )
+    .slice(0, 3);
+
+const breadcrumbItems = [{ label: "Blog", href: "/blog/" }, { label: title }];
+
+const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+---
+
+<Layout title={`${title} | Blog CONKRET`} description={description}>
+    <BlogSEO
+        title={title}
+        description={description}
+        pubDate={pubDate}
+        image={image}
+        slug={entry.slug}
+        tags={tags}
+    />
+
+    <Header />
+
+    <main class="post-page">
+        <header class="post-header">
+            <div class="container-small">
+                <Breadcrumbs items={breadcrumbItems} />
+                <div class="header-content mt-4">
+                    <div class="post-meta">
+                        <time>{formattedDate}</time>
+                        <span class="dot"></span>
+                        <span class="author">Por CONKRET Equipo Técnico</span>
+                    </div>
+                    <div class="post-tags mt-2">
+                        {tags.map((tag) => <span class="tag">#{tag}</span>)}
+                    </div>
+                </div>
+            </div>
+            <div class="post-hero-image mt-8">
+                <div class="container hero-container">
+                    <img
+                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp"
+                        alt={title}
+                        class="hero-img"
+                    />
+                    <div class="hero-overlay">
+                        <div class="container-small">
+                            <h1 class="hero-title">{title}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-article py-12">
+            <div class="article-layout">
+                <aside class="article-sidebar">
+                    <div class="sticky-top">
+                        <div class="sidebar-box quote-box">
+                            <p>
+                                "La calidad del concreto es el seguro de vida de
+                                tu edificación."
+                            </p>
+                        </div>
+                        <div class="sidebar-box share-box">
+                            <span class="box-label"
+                                >¿Necesitas una cotización?</span
+                            >
+                            <a
+                                href="https://wa.me/51972047903"
+                                class="btn-whatsapp">Chat con un experto</a
+                            >
+                        </div>
+                    </div>
+                </aside>
+
+                <article class="article-content prose">
+                    <Content />
+
+                    <div class="post-footer-cta mt-12">
+                        <div class="cta-banner">
+                            <h3>¡Construye con los expertos!</h3>
+                            <p>
+                                Solicita hoy mismo tu cotización de concreto
+                                premezclado o mortero listo para tu obra en
+                                Lima.
+                            </p>
+                            <a
+                                href="https://wa.me/51972047903?text=Hola,%20vengo%20del%20blog%20y%20quiero%20cotizar"
+                                class="btn-primary">Cotizar por WhatsApp</a
+                            >
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        {
+            relatedPosts.length > 0 && (
+                <section class="related-posts bg-light py-12">
+                    <div class="container">
+                        <h2 class="text-center mb-8">Artículos Relacionados</h2>
+                        <div class="related-grid">
+                            {relatedPosts.map((post) => (
+                                <a
+                                    href={`/blog/${post.slug}/`}
+                                    class="related-card-link"
+                                >
+                                    <div class="related-card">
+                                        <img
+                                            src={post.data.image}
+                                            alt={post.data.title}
+                                        />
+                                        <div class="p-4">
+                                            <h3>{post.data.title}</h3>
+                                            <span class="more">
+                                                Leer artículo →
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )
+        }
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .post-page {
+        background: #fff;
+    }
+    .container-small {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    .container-article {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .post-header {
+        padding-top: 3rem;
+        background: #fcfcfc;
+        border-bottom: 1px solid #eee;
+    }
+    .post-header h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 1.5rem 0;
+        color: #111;
+    }
+
+    .post-meta {
+        display: flex;
+        align-items: center;
+        color: #666;
+        font-size: 0.95rem;
+    }
+    .dot {
+        width: 4px;
+        height: 4px;
+        background: #ccc;
+        border-radius: 50%;
+        margin: 0 0.8rem;
+    }
+
+    .post-tags {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    .tag {
+        color: var(--color-primary);
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .hero-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    .post-hero-image img {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-title {
+        color: white !important;
+        font-size: 3.5rem !important;
+        font-weight: 900 !important;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+        margin: 0 !important;
+        line-height: 1.1 !important;
+    }
+
+    .article-layout {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .article-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+    .sidebar-box {
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid #eee;
+    }
+    .quote-box {
+        background: #fff1f2;
+        border-left: 4px solid var(--color-primary);
+        font-style: italic;
+        color: #b91c1c;
+    }
+    .box-label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-whatsapp {
+        display: block;
+        background: #25d366;
+        color: white;
+        text-align: center;
+        padding: 0.75rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.2s;
+    }
+    .btn-whatsapp:hover {
+        transform: scale(1.03);
+    }
+
+    /* Typography / Prose */
+    .article-content {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #333;
+    }
+    .prose :global(h2) {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        color: #111;
+    }
+    .prose :global(h3) {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+    .prose :global(p) {
+        margin-bottom: 1.5rem;
+    }
+    .prose :global(ul) {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+    }
+    .prose :global(li) {
+        margin-bottom: 0.5rem;
+    }
+    .prose :global(strong) {
+        color: #000;
+        font-weight: 700;
+    }
+    .prose :global(table) {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 1rem;
+    }
+    .prose :global(th),
+    .prose :global(td) {
+        padding: 1rem;
+        border: 1px solid #eee;
+        text-align: left;
+    }
+    .prose :global(th) {
+        background: #f9f9f9;
+        font-weight: bold;
+    }
+
+    .cta-banner {
+        background: #1a1a1a;
+        color: white;
+        padding: 3rem;
+        border-radius: 16px;
+        text-align: center;
+    }
+    .cta-banner h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    .cta-banner p {
+        color: #ccc;
+        margin-bottom: 2rem;
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    .related-card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .related-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 100%;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.2s;
+    }
+    .related-card:hover {
+        transform: translateY(-5px);
+    }
+    .related-card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+    .related-card h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    .more {
+        color: var(--color-primary);
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 992px) {
+        .article-layout {
+            grid-template-columns: 1fr;
+        }
+        .article-sidebar {
+            display: none;
+        }
+        .post-header h1 {
+            font-size: 2.2rem;
+        }
+        .related-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

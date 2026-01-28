@@ -1,0 +1,198 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FAQAccordion from "../../components/FAQAccordion.astro";
+import "../../styles/global.css";
+
+const title = "Mezcla Lista para Tarrajeo | Mortero Ensaco CONKRET";
+const description =
+    "Mortero predosificado de alta calidad para tarrajeo de muros y cielos rasos. Menor merma, mayor adherencia y acabado uniforme. ¡Compra mortero listo!";
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Mortero", href: "/mortero/" },
+    { label: "Mezcla para Tarrajeo" },
+];
+
+const faqs = [
+    {
+        question: "¿Cuántas bolsas de mortero necesito por m2?",
+        answer: "Para un espesor de 1.5 cm, una bolsa de 40kg rinde aproximadamente 1.3 a 1.5 m2, dependiendo de la rugosidad de la superficie.",
+    },
+    {
+        question: "¿Se debe agregar arena a la mezcla lista?",
+        answer: "No. La mezcla lista CONKRET ya incluye la arena graduada y el cemento en la proporción ideal. Solo debe agregar agua limpia.",
+    },
+    {
+        question: "¿Es apto para interiores y exteriores?",
+        answer: "Sí, nuestro mortero para tarrajeo es altamente resistente a la intemperie y ofrece un acabado fino apto para sellar con pintura directamente.",
+    },
+];
+
+const technicalSpecs = [
+    { label: "Dosificación", value: "Industrializada (Peso)" },
+    { label: "Resistencia", value: "Apta para muros portantes y tabiquería" },
+    { label: "Presentación", value: "Bolsas de 40 kg" },
+    { label: "Acabado", value: "Fino / Caravista" },
+];
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="section">
+            <div class="product-hero grid-2 align-center">
+                <div class="product-visual">
+                    <img
+                        src="https://placehold.co/800x800/e40323/white?text=Mortero+Tarrajeo"
+                        alt="Bolsa de mezcla lista para tarrajeo"
+                        class="shadow-lg rounded"
+                    />
+                </div>
+                <div class="product-info-text">
+                    <span class="badge">Producto Estrella</span>
+                    <h1>Mezcla Lista para Tarrajeo</h1>
+                    <p class="lead">
+                        Simplifique su obra con nuestro mortero predosificado.
+                        Garantice un acabado uniforme en todas sus paredes con
+                        la confianza de CONKRET.
+                    </p>
+
+                    <div class="specs-mini-grid">
+                        {
+                            technicalSpecs.map((spec) => (
+                                <div class="spec-mini">
+                                    <strong>{spec.label}</strong>
+                                    <span>{spec.value}</span>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <div class="flex-gap mt-4">
+                        <a
+                            href="https://wa.me/51972047903?text=Cotizar%20Mortero%20Tarrajeo"
+                            class="btn-primary">Cotizar por Mayor</a
+                        >
+                        <a
+                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20requiero%20soporte%20tecnico"
+                            class="btn-outline">Soporte Técnico</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container-small">
+                <h2 class="text-center">Ventajas de usar Mortero Listo</h2>
+                <div class="grid-3 mt-4">
+                    <div class="card-white hover-lift">
+                        <h3>Acabado Superior</h3>
+                        <p>
+                            Al usar arena seleccionada y tamizada
+                            industrialmente, el acabado es mucho más fino y
+                            libre de fisuras.
+                        </p>
+                    </div>
+                    <div class="card-white hover-lift">
+                        <h3>Ahorro Logístico</h3>
+                        <p>
+                            Adiós a los cerros de arena y cemento en la calle.
+                            Almacene solo lo que necesita en bolsas limpias y
+                            fáciles de mover.
+                        </p>
+                    </div>
+                    <div class="card-white hover-lift">
+                        <h3>Control de Obra</h3>
+                        <p>
+                            Es más fácil contar bolsas que cubicar arena suelta.
+                            Evite robos y desperdicios de material.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="text-center">Preguntas Frecuentes</h2>
+            <FAQAccordion faqs={faqs} />
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .mt-4 {
+        margin-top: 2rem;
+    }
+    .badge {
+        background: #fff1f2;
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .specs-mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+    }
+    .spec-mini strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+        text-transform: uppercase;
+    }
+    .spec-mini span {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .flex-gap {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .container-small {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .card-white {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+    }
+    .card-white h3 {
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    .card-white p {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        .specs-mini-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

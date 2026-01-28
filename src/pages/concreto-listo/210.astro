@@ -1,0 +1,265 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FAQAccordion from "../../components/FAQAccordion.astro";
+import "../../styles/global.css";
+
+const productTitle = "Concreto Premezclado f'c 210 kg/cm²";
+const productDescription =
+    "El concreto premezclado de 210 kg/cm² es la resistencia más utilizada en el Perú para la construcción de vigas, columnas y losas de viviendas. Ofrece el equilibrio perfecto entre trabajabilidad y seguridad estructural.";
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Concreto Listo", href: "/concreto-listo/" },
+    { label: "f'c 210 kg/cm²" },
+];
+
+const faqs = [
+    {
+        question: "¿Para qué se usa el concreto 210?",
+        answer: "Es el estándar estructural para viviendas de hasta 4 o 5 pisos en Lima. Se usa en columnas, vigas, techos (losas aligeradas) y zapatas.",
+    },
+    {
+        question: "¿Incluye servicio de bombeo?",
+        answer: "Sí, podemos suministrar el concreto con bomba telescópica (pluma) o estacionaria según la accesibilidad de su obra.",
+    },
+    {
+        question: "¿Cuál es el tiempo de vida de la mezcla?",
+        answer: "Nuestras mezclas incluyen aditivos retardantes que garantizan la trabajabilidad por 2 a 3 horas, ideal para el tráfico de Lima.",
+    },
+];
+
+// JSON-LD Product Schema
+const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: productTitle,
+    description: productDescription,
+    brand: {
+        "@type": "Brand",
+        name: "CONKRET",
+    },
+    offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        priceCurrency: "PEN",
+    },
+};
+---
+
+<Layout
+    title={`${productTitle} | Todo sobre f'c 210`}
+    description={productDescription}
+>
+    <Header />
+
+    <main class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="section">
+            <div class="product-header grid-2 align-center">
+                <div class="product-info-text">
+                    <span class="badge">Más Vendido</span>
+                    <h1>{productTitle}</h1>
+                    <p class="lead">{productDescription}</p>
+
+                    <div class="specs-mini-grid">
+                        <div class="spec-mini">
+                            <strong>Resistencia</strong>
+                            <span>210 kg/cm²</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Slump</strong>
+                            <span>4" +/- 1"</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Agregado</strong>
+                            <span>Huso 67 (1/2" - 3/4")</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Cemento</strong>
+                            <span>Tipo I, V o HS</span>
+                        </div>
+                    </div>
+
+                    <div class="actions mt-4 flex-gap">
+                        <a
+                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar%20Concreto%20210"
+                            class="btn-primary">Solicitar Cotización</a
+                        >
+                        <a
+                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20hablar%20con%20un%20asesor"
+                            class="btn-outline">Hablar con Asesor</a
+                        >
+                    </div>
+                </div>
+                <div class="product-visual">
+                    <img
+                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp"
+                        alt={productTitle}
+                        class="shadow-lg rounded"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container-small">
+                <h2 class="text-center">Especificaciones Técnicas</h2>
+                <div class="specs-grid mt-4">
+                    <div class="card-white p-4">
+                        <h3>Usos Recomendados</h3>
+                        <ul class="check-list">
+                            <li>Columnas y Vigas estructurales.</li>
+                            <li>Losas aligeradas y macizas.</li>
+                            <li>Zapatas y cimentaciones armadas.</li>
+                            <li>Muros de contención.</li>
+                        </ul>
+                    </div>
+                    <div class="card-white p-4">
+                        <h3>Ventajas CONKRET</h3>
+                        <ul class="check-list">
+                            <li>Dosificación exacta por peso (Automática).</li>
+                            <li>Control de calidad en laboratorio propio.</li>
+                            <li>Flota moderna con GPS para puntualidad.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section seo-content">
+            <div class="container-small">
+                <h2>¿Por qué usar Concreto 210 en su obra?</h2>
+                <p>
+                    El concreto de **f'c 210** es el estándar solicitado por
+                    ingenieros civiles para estructuras de hasta 4 o 5 pisos en
+                    zonas sísmicas como Lima. Utilizar un concreto dosificado en
+                    planta garantiza que la resistencia final sea realmente la
+                    contratada, evitando fallas estructurales por mezclas
+                    manuales deficientes.
+                </p>
+                <p>
+                    En CONKRET, utilizamos cementos frescos y agregados de
+                    canteras certificadas para asegurar la durabilidad de su
+                    inversión.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="text-center">Preguntas Frecuentes</h2>
+            <FAQAccordion faqs={faqs} />
+        </section>
+    </main>
+
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(productSchema)}
+    />
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .badge {
+        background: #fff1f2;
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    .align-center {
+        align-items: center;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+    .product-visual img {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .specs-mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .spec-mini strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+        text-transform: uppercase;
+    }
+    .spec-mini span {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .mt-4 {
+        margin-top: 3rem;
+    }
+    .p-4 {
+        padding: 2rem;
+    }
+    .flex-gap {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .container-small {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .card-white {
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .check-list {
+        list-style: none;
+        padding: 0;
+    }
+    .check-list li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .check-list li::before {
+        content: "✓";
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .product-header {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+</style>

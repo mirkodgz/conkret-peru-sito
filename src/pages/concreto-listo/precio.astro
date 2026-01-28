@@ -1,0 +1,304 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import "../../styles/global.css";
+
+const title = "Precio de Concreto Premezclado m3 en Lima (Perú) 2026";
+const description =
+    "¿Qué precio tiene el m3 de concreto premezclado? Consulta el costo referencial de concreto 210, 175 y 280 para construcción en Lima. Cotiza directo con CONKRET.";
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Concreto Listo", href: "/concreto-listo/" },
+    { label: "Precio m3" },
+];
+
+const prices = [
+    {
+        item: "Concreto Listo f'c 175 kg/cm²",
+        use: "Pisos, veredas, gradas",
+        icon: "📏",
+    },
+    {
+        item: "Concreto Listo f'c 210 kg/cm²",
+        use: "Vigas, columnas, losas",
+        icon: "🏠",
+        highlight: true,
+    },
+    {
+        item: "Concreto Listo f'c 245 kg/cm²",
+        use: "Estructuras de carga pesada",
+        icon: "🏢",
+    },
+    {
+        item: "Concreto Listo f'c 280 kg/cm²",
+        use: "Pavimentos industriales",
+        icon: "🏗️",
+    },
+];
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="section">
+            <div class="text-center">
+                <h1>Precio de Concreto Premezclado</h1>
+                <p class="lead">
+                    Consulte el costo referencial por metro cúbico (m³) para sus
+                    proyectos en Lima Metropolitana y Callao.
+                </p>
+            </div>
+
+            <div class="pricing-card mt-4 shadow-lg">
+                <div class="pricing-header bg-dark">
+                    <h2>Tarifas Referenciales m³</h2>
+                    <p>Valores sujetos a ubicación y volumen de despacho.</p>
+                </div>
+                <div class="pricing-body">
+                    <div class="table-responsive">
+                        <table class="price-table">
+                            <thead>
+                                <tr>
+                                    <th>Resistencia</th>
+                                    <th>Uso Principal</th>
+                                    <th class="text-right">Cotización</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    prices.map((p) => (
+                                        <tr
+                                            class={
+                                                p.highlight
+                                                    ? "row-highlight"
+                                                    : ""
+                                            }
+                                        >
+                                            <td>
+                                                <span class="price-icon">
+                                                    {p.icon}
+                                                </span>
+                                                <strong>{p.item}</strong>
+                                            </td>
+                                            <td>{p.use}</td>
+                                            <td class="text-right">
+                                                <a
+                                                    href={`https://wa.me/TODO?text=Cotizar%20${p.item}`}
+                                                    class="btn-sm btn-outline"
+                                                >
+                                                    Solicitar Precio
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="pricing-footer bg-light">
+                    <p>
+                        💡 <strong>Tip CONKRET:</strong> El precio por m³ suele disminuir
+                        en pedidos mayores a 10m³.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section grid-2 align-center">
+            <div>
+                <h2>Factores que influyen en el costo</h2>
+                <p>
+                    No solo la resistencia (f'c) determina el precio final. Para
+                    una cotización exacta de CONKRET, consideramos:
+                </p>
+                <ul class="custom-list">
+                    <li>
+                        <strong>Distancia a Obra:</strong> El flete varía según la
+                        cercanía a nuestras plantas en Lima.
+                    </li>
+                    <li>
+                        <strong>Servicio de Bombeo:</strong> Si requiere bomba telescópica
+                        para vaciados en altura.
+                    </li>
+                    <li>
+                        <strong>Aditivos:</strong> Acelerantes de fragua o plastificantes
+                        adicionales.
+                    </li>
+                    <li>
+                        <strong>Horario de Vaciado:</strong> Los vaciados nocturnos
+                        o en domingos pueden tener recargos.
+                    </li>
+                </ul>
+            </div>
+            <div class="cta-box shadow-md hover-lift">
+                <h3>¿Necesitas un presupuesto cerrado?</h3>
+                <p>
+                    Nuestro equipo técnico revisa tus planos sin costo para
+                    calcular el volumen exacto y brindarte el mejor precio por
+                    m³.
+                </p>
+                <a
+                    href="https://wa.me/TODO"
+                    class="btn-primary full-width text-center"
+                    >Hablar con un asesor ahora</a
+                >
+            </div>
+        </section>
+
+        <section class="section faqs-light">
+            <h2 class="text-center">Dudas comunes sobre el precio</h2>
+            <div class="faq-simple">
+                <div class="faq-q">¿Incluye IGV el precio referencial?</div>
+                <div class="faq-a">
+                    Por lo general, las cotizaciones se brindan tanto en valor
+                    unitario como con IGV incluido para transparencia del
+                    cliente.
+                </div>
+                <div class="faq-q">¿Cuál es el volumen mínimo de despacho?</div>
+                <div class="faq-a">
+                    Despachamos desde 1m³, aunque el precio óptimo de flete se
+                    alcanza a partir de los 7m³ (capacidad estándar de un
+                    mixer).
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .mt-4 {
+        margin-top: 3rem;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .pricing-card {
+        border-radius: 12px;
+        overflow: hidden;
+        background: white;
+        margin-bottom: 2rem;
+    }
+    .pricing-header {
+        padding: 3rem;
+        color: white;
+        background: #1a1a1a;
+        text-align: center;
+    }
+    .pricing-header h2 {
+        margin-bottom: 0.5rem;
+        color: var(--color-primary);
+    }
+    .pricing-body {
+        padding: 2rem;
+    }
+    .price-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .price-table th,
+    .price-table td {
+        padding: 1.25rem;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+    }
+    .price-table th {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: #888;
+    }
+    .price-icon {
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+    }
+    .row-highlight {
+        background-color: #fff9f9;
+    }
+    .row-highlight td {
+        border-left: 4px solid var(--color-primary);
+    }
+
+    .btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .full-width {
+        display: block;
+        width: 100%;
+    }
+
+    .pricing-footer {
+        padding: 1.5rem 2rem;
+        border-top: 1px solid #eee;
+        font-size: 0.95rem;
+    }
+
+    .custom-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .custom-list li {
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .custom-list li::before {
+        content: "✓";
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    .cta-box {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        border: 1px solid #eee;
+    }
+    .cta-box h3 {
+        margin-bottom: 1.5rem;
+    }
+
+    .faqs-light {
+        background: #fdfdfd;
+        padding: 4rem 0;
+    }
+    .faq-simple {
+        max-width: 800px;
+        margin: 3rem auto 0;
+    }
+    .faq-q {
+        font-weight: bold;
+        color: var(--color-primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .faq-a {
+        margin-bottom: 2.5rem;
+        color: #444;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .pricing-header {
+            padding: 2rem 1.5rem;
+        }
+        .price-table th:nth-child(2),
+        .price-table td:nth-child(2) {
+            display: none;
+        }
+    }
+</style>

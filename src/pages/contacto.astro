@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAWhatsApp from "../components/CTAWhatsApp.astro";
+import "../styles/global.css";
+
+const title = "Contacto | CONKRET Perú";
+const description =
+    "Ponte en contacto con nosotros para cotizar concreto premezclado y mezclas secas en Lima. Soporte técnico y ventas para tu obra.";
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container py-5">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h1>Contáctanos</h1>
+                <p class="lead">
+                    Estamos listos para abastecer su proyecto con la mejor
+                    calidad de concreto y mortero.
+                </p>
+
+                <ul class="contact-methods">
+                    <li>
+                        <strong>📍 Ubicación:</strong>
+                        <p>TODO: Dirección exacta desde brief</p>
+                    </li>
+                    <li>
+                        <strong>📞 Teléfonos:</strong>
+                        <p>TODO: 9XX XXX XXX / 01 XXX XXXX</p>
+                    </li>
+                    <li>
+                        <strong>✉️ Email:</strong>
+                        <p>TODO: ventas@conkret.pe</p>
+                    </li>
+                    <li>
+                        <strong>⏰ Horario:</strong>
+                        <p>
+                            Lunes a Viernes: 8:00 AM - 6:00 PM<br />Sábados:
+                            8:00 AM - 1:00 PM
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact-form-placeholder">
+                <h3>Solicitar una Cotización</h3>
+                <p>
+                    Complete sus datos y un asesor técnico lo contactará a la
+                    brevedad.
+                </p>
+
+                <div class="form-mockup">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input
+                            type="text"
+                            placeholder="Ej: Juan Pérez"
+                            disabled
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono / WhatsApp</label>
+                        <input
+                            type="tel"
+                            placeholder="Ej: 987654321"
+                            disabled
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Producto</label>
+                        <select disabled>
+                            <option>Concreto Premezclado</option>
+                            <option>Mezclas Secas</option>
+                            <option>Shotcrete</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ubicación de la Obra</label>
+                        <input
+                            type="text"
+                            placeholder="Ej: Los Olivos"
+                            disabled
+                        />
+                    </div>
+                    <button class="btn-primary" disabled
+                        >Enviar Solicitud</button
+                    >
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-5 {
+        padding: 4rem 0;
+    }
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 3rem;
+    }
+
+    .contact-methods {
+        list-style: none;
+    }
+    .contact-methods li {
+        margin-bottom: 2rem;
+    }
+    .contact-methods strong {
+        font-size: 1.1rem;
+        color: var(--color-primary);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-form-placeholder {
+        background: #f9f9f9;
+        padding: 3rem;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+    }
+    .contact-form-placeholder h3 {
+        margin-bottom: 1rem;
+    }
+    .contact-form-placeholder p {
+        margin-bottom: 2rem;
+        color: #666;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 992px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

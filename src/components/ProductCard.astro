@@ -1,0 +1,112 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+    specs?: { label: string; value: string }[];
+}
+
+const { title, description, image, link, specs = [] } = Astro.props;
+---
+
+<div class="product-card">
+    <div class="product-image">
+        <img src={image} alt={title} loading="lazy" />
+    </div>
+    <div class="product-info">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        {
+            specs.length > 0 && (
+                <ul class="product-specs">
+                    {specs.map((spec) => (
+                        <li>
+                            <strong>{spec.label}:</strong> {spec.value}
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+        <div class="product-actions">
+            <a href={link} class="btn-secondary">Ver más</a>
+            <a
+                href={`https://wa.me/51972047903?text=Cotizar%20${title}`}
+                class="btn-whatsapp-small"
+                target="_blank">Cotizar</a
+            >
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        background: white;
+        display: flex;
+        flex-direction: column;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .product-image img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+    .product-info {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .product-info h3 {
+        font-size: 1.25rem;
+        color: var(--color-primary);
+    }
+    .product-info p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+    .product-specs {
+        list-style: none;
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+    .product-specs li {
+        padding: 0.25rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    .product-actions {
+        margin-top: auto;
+        display: flex;
+        gap: 0.5rem;
+    }
+    .btn-secondary {
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        flex: 1;
+        text-align: center;
+    }
+    .btn-whatsapp-small {
+        background-color: #25d366;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        flex: 1;
+        text-align: center;
+    }
+</style>

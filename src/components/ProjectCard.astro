@@ -1,0 +1,66 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    location: string;
+    link: string;
+}
+
+const { title, description, image, location, link } = Astro.props;
+---
+
+<div class="project-card">
+    <div class="project-image">
+        <img src={image} alt={title} loading="lazy" />
+    </div>
+    <div class="project-info">
+        <span class="project-location">{location}</span>
+        <h3>{title}</h3>
+        <p>{description.substring(0, 120)}...</p>
+        <a href={link} class="btn-link">Ver proyecto &rarr;</a>
+    </div>
+</div>
+
+<style>
+    .project-card {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+    .project-image img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+    }
+    .project-info {
+        padding: 1.5rem;
+    }
+    .project-location {
+        font-size: 0.8rem;
+        color: var(--color-primary);
+        text-transform: uppercase;
+        font-weight: 400;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .project-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    .project-info p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1.25rem;
+    }
+    .btn-link {
+        font-weight: 400;
+        color: var(--color-primary);
+        font-size: 0.9rem;
+    }
+</style>

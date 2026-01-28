@@ -1,0 +1,445 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import "../../styles/global.css";
+
+const mortarProducts = [
+    {
+        title: "Mortero Fino",
+        description:
+            "Mezcla seca de granulometría fina ideal para acabados y cielos rasos.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp", // Generic for now
+        link: "/mortero/mortero-fino/",
+    },
+    {
+        title: "Mortero Grueso",
+        description:
+            "Solución industrial para tarrajeos primarios y nivelación de superficies.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp",
+        link: "/mortero/mortero-grueso/",
+    },
+    {
+        title: "Mezcla para Tarrajeo",
+        description:
+            "Dosificación hidrófuga lista para aplicar en muros exteriores e interiores.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp",
+        link: "/mortero/tarrajeo/",
+    },
+];
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Morteros" },
+];
+---
+
+<Layout
+    title="Morteros y Mezclas Secas Premium | CONKRET"
+    description="Línea premium de morteros embolsados para tarrajeo y asentado. Calidad industrial, cero desperdicio y mayor rapidez en su obra."
+>
+    <Header />
+
+    <main class="premium-page">
+        <!-- Hero Section -->
+        <section class="premium-hero">
+            <div class="hero-bg-container">
+                <img
+                    src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp"
+                    alt="Morteros CONKRET"
+                    class="hero-parallax-img"
+                    style="opacity: 0.5"
+                />
+                <div
+                    class="hero-vignette"
+                    style="background: linear-gradient(90deg, rgba(10,14,20,1) 0%, rgba(10,14,20,0.6) 100%);"
+                >
+                </div>
+            </div>
+            <div class="container hero-content-wrapper relative">
+                <Breadcrumbs items={breadcrumbItems} />
+                <div class="hero-main-text mt-8">
+                    <span class="premium-badge">Acabados de Alta Precisión</span
+                    >
+                    <h1 class="display-title">
+                        MORTEROS Y <br /><span class="text-primary"
+                            >MEZCLAS SECAS</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        La solución industrial para tarrajeo y asentado.
+                        Garantice acabados uniformes y elimine el desperdicio de
+                        materiales en su proyecto.
+                    </p>
+                    <div class="hero-actions flex gap-6 mt-4">
+                        <a href="#productos" class="btn-primary-glossy"
+                            >Ver Productos</a
+                        >
+                        <a
+                            href="https://wa.me/51972047903"
+                            class="btn-white-outline">Cotizar por Bolsa</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section id="productos" class="section py-32 bg-white">
+            <div class="container">
+                <div class="section-header-centered mb-20 text-center">
+                    <span class="section-tag-small">Catálogo Especializado</span
+                    >
+                    <h2 class="title-xl">
+                        Línea de <span class="text-primary">Morteros</span>
+                    </h2>
+                    <div class="accent-line-center mx-auto"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    {
+                        mortarProducts.map((p) => (
+                            <div class="premium-bag-card">
+                                <div
+                                    class="bag-display"
+                                    style="background: #f8fafc;"
+                                >
+                                    <div class="glow-effect" />
+                                    <img
+                                        src={p.image}
+                                        alt={p.title}
+                                        class="floating-bag"
+                                    />
+                                </div>
+                                <div class="card-body p-8">
+                                    <h3 class="text-xl font-black mb-2 uppercase">
+                                        {p.title}
+                                    </h3>
+                                    <p class="card-tagline mb-8">
+                                        Máxima adherencia estructural
+                                    </p>
+                                    <a
+                                        href={p.link}
+                                        class="btn-modern-link group"
+                                    >
+                                        Ver especificaciones
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="transition-transform group-hover:translate-x-2"
+                                        >
+                                            <>
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                            </>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="section py-32 bg-light">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <span class="section-tag-small"
+                            >Ventajas Operativas</span
+                        >
+                        <h2 class="title-lg mb-10">
+                            ¿Por qué usar <span class="text-primary"
+                                >Mortero Embolsado</span
+                            >?
+                        </h2>
+                        <div class="grid gap-8">
+                            <div
+                                class="benefit-item-v4 flex gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100"
+                            >
+                                <div class="icon-circle-red">✨</div>
+                                <div>
+                                    <h4 class="font-black mb-2">
+                                        Cero Desperdicio
+                                    </h4>
+                                    <p class="text-sm opacity-70">
+                                        Dosificación exacta que elimina las
+                                        sobras de arena y cemento en el piso de
+                                        la obra.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="benefit-item-v4 flex gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100"
+                            >
+                                <div class="icon-circle-red">🧹</div>
+                                <div>
+                                    <h4 class="font-black mb-2">
+                                        Limpieza Total
+                                    </h4>
+                                    <p class="text-sm opacity-70">
+                                        Reduce el polvo y mantiene el orden en
+                                        el área de trabajo, ideal para
+                                        remodelaciones.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="benefit-item-v4 flex gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100"
+                            >
+                                <div class="icon-circle-red">🏗️</div>
+                                <div>
+                                    <h4 class="font-black mb-2">
+                                        Rapidez de Avance
+                                    </h4>
+                                    <p class="text-sm opacity-70">
+                                        Ahorre hasta un 40% en tiempo de
+                                        preparación. Solo agregue agua y
+                                        aplique.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img
+                            src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp"
+                            alt="Aplicación de Mortero"
+                            class="rounded-3xl shadow-2xl"
+                        />
+                        <div
+                            class="absolute -top-12 -right-12 w-48 h-48 border-8 border-primary rounded-full opacity-10 animate-pulse"
+                        >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 bg-dark text-white text-center">
+            <div class="container">
+                <h2 class="title-lg text-white mb-8">
+                    ¿Listo para mejorar su <span class="text-primary"
+                        >productividad</span
+                    >?
+                </h2>
+                <p class="text-xl mb-12 opacity-70 max-w-2xl mx-auto">
+                    Solicite una cotización por volumen y descubra cómo ahorrar
+                    en su próximo proyecto.
+                </p>
+                <a href="/contacto/" class="btn-primary-glossy"
+                    >Solicitar Presupuesto</a
+                >
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    /* Reuse premium styles for consistency */
+    .premium-page {
+        color: #1a1c1e;
+    }
+    .text-primary {
+        color: var(--color-primary);
+    }
+    .bg-dark {
+        background-color: #0b0f14;
+    }
+
+    /* Hero */
+    .premium-hero {
+        height: 70vh;
+        min-height: 600px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #000;
+        overflow: hidden;
+    }
+    .hero-bg-container {
+        position: absolute;
+        inset: 0;
+    }
+    .hero-parallax-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .hero-vignette {
+        position: absolute;
+        inset: 0;
+    }
+    .display-title {
+        font-size: clamp(3rem, 7vw, 5rem);
+        line-height: 0.9;
+        font-weight: 900;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+    }
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #cbd5e1;
+        max-width: 600px;
+        line-height: 1.5;
+        margin-bottom: 3rem;
+        margin-top: 1.5rem;
+    }
+
+    .premium-badge {
+        background: rgba(228, 3, 35, 0.2);
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        border: 1px solid rgba(228, 3, 35, 0.3);
+        text-transform: uppercase;
+    }
+
+    .btn-primary-glossy {
+        background: var(--color-primary);
+        color: white;
+        padding: 1.25rem 2.8rem;
+        border-radius: 12px;
+        font-weight: 800;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: inline-block;
+        box-shadow: 0 10px 30px rgba(var(--color-primary-rgb), 0.3);
+    }
+    .btn-primary-glossy:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(var(--color-primary-rgb), 0.5);
+    }
+
+    .btn-white-outline {
+        border: 2px solid white;
+        color: white;
+        padding: 1.25rem 2.8rem;
+        border-radius: 12px;
+        font-weight: 800;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+    .btn-white-outline:hover {
+        background: white;
+        color: black;
+    }
+
+    /* Cards */
+    .premium-bag-card {
+        background: white;
+        border-radius: 32px;
+        border: 1px solid #f1f3f5;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        overflow: hidden;
+    }
+    .premium-bag-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+    }
+    .bag-display {
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .floating-bag {
+        max-width: 80%;
+        filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.15));
+        transition: transform 0.6s ease;
+    }
+    .premium-bag-card:hover .floating-bag {
+        transform: scale(1.05) rotate(-3deg);
+    }
+    .card-tagline {
+        color: #9ca3af;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .btn-modern-link {
+        color: var(--color-primary);
+        font-weight: 900;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    /* Benefits */
+    .icon-circle-red {
+        width: 48px;
+        height: 48px;
+        background: #fff1f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 1.2rem;
+    }
+    .section-tag-small {
+        color: var(--color-primary);
+        font-weight: 900;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .title-xl {
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .title-lg {
+        font-size: 2.8rem;
+        font-weight: 900;
+        line-height: 1.2;
+    }
+    .accent-line-center {
+        width: 80px;
+        height: 5px;
+        background: var(--color-primary);
+        margin: 2rem auto;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .display-title {
+            font-size: 2.8rem;
+        }
+        .hero-actions {
+            flex-direction: column;
+        }
+        .btn-white-outline {
+            margin-left: 0;
+            text-align: center;
+        }
+        .title-xl {
+            font-size: 2.5rem;
+        }
+        .title-lg {
+            font-size: 2.2rem;
+        }
+    }
+</style>

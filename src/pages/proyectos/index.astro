@@ -1,0 +1,81 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import "../../styles/global.css";
+
+const projects = [
+    {
+        title: "Parque Arauco La Molina",
+        description:
+            "Suministro de mezclas especiales para la etapa de acabados del Centro Comercial.",
+        location: "La Molina, Lima",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563449/Proyecto-Parque-Arauco-La-Molina_arjw0h.webp",
+        link: "/proyectos/parque-arauco-la-molina/",
+    },
+    {
+        title: "Universidad Científica del Sur",
+        description:
+            "Suministro de concreto estructural para la ampliación de la Sede Villa.",
+        location: "Chorrillos, Lima",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563514/CIENTIFICA_gwjjbb.webp",
+        link: "/proyectos/universidad-cientifica-del-sur/",
+    },
+    {
+        title: "Mega Puerto de Chancay",
+        description:
+            "Suministro logístico y especializado para construcciones paralelas en el puerto.",
+        location: "Chancay, Huaral",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563597/CHANCAY_nycsif.webp",
+        link: "/proyectos/mega-puerto-chancay/",
+    },
+    {
+        title: "Acea Perú",
+        description:
+            "Reparación de vías y veredas como aliado estratégico en obras de Sedapal.",
+        location: "Lima Metropolitana",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563667/ACEA_k4yprr.webp",
+        link: "/proyectos/acea-peru/",
+    },
+];
+---
+
+<Layout
+    title="Proyectos y Casos de Éxito | CONKRET"
+    description="Descubre los proyectos de construcción más emblemáticos en Perú donde CONKRET ha brindado soluciones de concreto y mortero de alta calidad."
+>
+    <Header />
+
+    <main class="container py-5">
+        <h1>Nuestros Proyectos</h1>
+        <p class="lead">
+            Casos de éxito donde la calidad y puntualidad de CONKRET marcaron la
+            diferencia.
+        </p>
+
+        <div class="projects-grid">
+            {projects.map((project) => <ProjectCard {...project} />)}
+        </div>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-5 {
+        padding: 4rem 0;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 4rem;
+    }
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+    }
+</style>

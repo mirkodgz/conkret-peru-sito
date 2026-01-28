@@ -1,0 +1,338 @@
+---
+const testimonials = [
+    {
+        name: "Javier Alarcón",
+        username: "@javier_constructora",
+        rating: 5,
+        content:
+            'Conkret siempre nos entrega productos de la mejor calidad. Su <span class="highlight">concreto listo ha elevado el estándar</span> en nuestros desarrollos residenciales en Lima.',
+    },
+    {
+        name: "Roxana Trujillo",
+        username: "@roxana_obra",
+        rating: 5,
+        content:
+            'La atención personalizada que recibí de Conkret fue excepcional. Sus mezclas son <span class="highlight">confiables y fáciles de usar</span> en cualquier tipo de proyecto, simplificando el trabajo en obra.',
+    },
+    {
+        name: "Matias Ventura",
+        username: "@matias_ingenieria",
+        rating: 5,
+        content:
+            'Desde que trabajo con Conkret, mis proyectos tienen una calidad superior. Su <span class="highlight">mortero grueso es perfecto</span> para trabajos estructurales robustos.',
+    },
+    {
+        name: "Carlos Mendoza",
+        username: "@cmendoza_arquitecto",
+        rating: 4.5,
+        content:
+            'El tarrajeo premezclado de Conkret nos ha permitido <span class="highlight">eliminar por completo el problema del salitre</span> en acabados de departamentos frente al mar.',
+    },
+    {
+        name: "Sofía Valdivia",
+        username: "@sofi_deco",
+        rating: 5,
+        content:
+            'Logramos acabados "cara de bebé" gracias a la finura de su arena tamizada industrialmente. <span class="highlight">Cero fisuras y ahorro de tiempo</span> increíble.',
+    },
+    {
+        name: "Andrés Ferrand",
+        username: "@andres_concreto",
+        rating: 5,
+        content:
+            'La logística de entrega es impecable. Los mixers llegan puntuales y el concreto mantiene la <span class="highlight">trabajabilidad ideal incluso con el tráfico de Lima</span>.',
+    },
+];
+---
+
+<section class="testimonials-section py-32">
+    <div class="container">
+        <div class="section-header text-center mb-16">
+            <span class="badge mb-6">Testimonios</span>
+            <h2 class="title-lg">Soporte al Cliente de Clase Mundial</h2>
+            <p class="lead opacity-70">
+                Lo que nuestros clientes dicen sobre su experiencia con CONKRET.
+            </p>
+        </div>
+
+        <!-- Marquee Container -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Double the list for seamless loop -->
+                {
+                    [...testimonials, ...testimonials].map((testimonial) => (
+                        <div class="testimonial-card">
+                            <div class="card-body">
+                                <p
+                                    class="content"
+                                    set:html={testimonial.content}
+                                />
+                            </div>
+                            <div class="card-footer">
+                                <div class="user-info">
+                                    <div class="username-wrap">
+                                        <h4 class="name">{testimonial.name}</h4>
+                                        <span class="handle">
+                                            {testimonial.username}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill={
+                                                i <
+                                                Math.floor(testimonial.rating)
+                                                    ? "#fbbf24"
+                                                    : i < testimonial.rating
+                                                      ? "url(#half-star)"
+                                                      : "none"
+                                            }
+                                            stroke="#fbbf24"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                        </svg>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="stats-footer">
+            <div class="stat-item">
+                <div class="stat-value">
+                    <span>4.8</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="#d97706"
+                        stroke="#d97706"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                        ></polygon></svg
+                    >
+                </div>
+                <p class="stat-label">Estrellas de 5</p>
+            </div>
+
+            <div class="actions">
+                <a href="/proyectos/" class="btn-outline">
+                    Ver todas las reseñas
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                            points="7 7 17 7 17 17"></polyline></svg
+                    >
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG gradient for half stars if needed -->
+    <svg width="0" height="0" class="hidden">
+        <defs>
+            <linearGradient id="half-star">
+                <stop offset="50%" stop-color="#fbbf24"></stop>
+                <stop offset="50%" stop-color="transparent" stop-opacity="1"
+                ></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+</section>
+
+<style>
+    .testimonials-section {
+        background-color: #f8fafc;
+        overflow: hidden;
+    }
+
+    .section-header {
+    }
+
+    .badge {
+        background: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+    }
+
+    .marquee-container {
+        width: 100%;
+        margin: 4rem 0;
+        position: relative;
+    }
+
+    .marquee-content {
+        display: flex;
+        gap: 1.5rem;
+        animation: marquee 60s linear infinite;
+        width: max-content;
+    }
+
+    .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-50% - 0.75rem));
+        }
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        width: 380px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.05),
+            0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f1f5f9;
+    }
+
+    .card-body .content {
+        color: #475569;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    :global(.highlight) {
+        background-color: rgba(228, 3, 35, 0.08);
+        color: #e40323;
+        padding: 0 0.2rem;
+        border-radius: 2px;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 1.5rem;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #e2e8f0;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .username-wrap .name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .username-wrap .handle {
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .rating {
+        display: flex;
+        gap: 2px;
+    }
+
+    .stats-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: #64748b;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+
+    .btn-outline {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 600;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .testimonial-card {
+            width: 320px;
+        }
+        .stats-footer {
+            gap: 2rem;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+        }
+    }
+</style>

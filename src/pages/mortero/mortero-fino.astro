@@ -1,0 +1,225 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FAQAccordion from "../../components/FAQAccordion.astro";
+import "../../styles/global.css";
+
+const productTitle = "Mortero Fino Premezclado";
+const productDescription =
+    "Mortero diseñado con arena fina seleccionada para acabados de tarrajeo en muros y cielos rasos. Superficie lisa lista para pintar.";
+
+const breadcrumbItems = [
+    { label: "Productos", href: "/productos/" },
+    { label: "Mortero", href: "/mortero/" },
+    { label: "Mortero Fino" },
+];
+
+const faqs = [
+    {
+        question: "¿Cuál es la diferencia con el mortero grueso?",
+        answer: "El mortero fino usa arena fina tamizada (<2mm) ideal para la capa final (tarrajeo), mientras que el grueso usa arena más grande para asentar ladrillos.",
+    },
+    {
+        question: "¿Necesita cernirse?",
+        answer: "No. Nuestro mortero fino ya viene con la arena tamizada industrialmente, libre de piedras y residuos, listo para mezclar con agua.",
+    },
+];
+
+const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: productTitle,
+    description: productDescription,
+    brand: {
+        "@type": "Brand",
+        name: "CONKRET",
+    },
+    offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        priceCurrency: "PEN",
+    },
+};
+---
+
+<Layout
+    title={`${productTitle} | Acabados y Tarrajeo`}
+    description={productDescription}
+>
+    <Header />
+
+    <main class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+
+        <section class="section">
+            <div class="product-header grid-2 align-center">
+                <div class="product-info-text">
+                    <h1>{productTitle}</h1>
+                    <p class="lead">{productDescription}</p>
+
+                    <div class="specs-mini-grid">
+                        <div class="spec-mini">
+                            <strong>Agregado</strong>
+                            <span>Arena Fina</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Uso Principal</strong>
+                            <span>Tarrajeo / Enlucido</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Acabado</strong>
+                            <span>Liso / Pulido</span>
+                        </div>
+                        <div class="spec-mini">
+                            <strong>Presentación</strong>
+                            <span>Bolsa 40kg</span>
+                        </div>
+                    </div>
+
+                    <div class="actions mt-4 flex-gap">
+                        <a
+                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar%20Mortero%20Fino"
+                            class="btn-primary">Solicitar Cotización</a
+                        >
+                        <a
+                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20hablar%20con%20un%20asesor"
+                            class="btn-outline">Asesoría Gratuita</a
+                        >
+                    </div>
+                </div>
+                <div class="product-visual">
+                    <img
+                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561622/Mortero-Fino-DEF_vlhbv2.webp"
+                        alt={productTitle}
+                        class="shadow-lg rounded"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container-small">
+                <h2 class="text-center">Beneficios del Premezclado Fino</h2>
+                <div class="specs-grid mt-4">
+                    <div class="card-white p-4">
+                        <h3>Acabado Superior</h3>
+                        <p>
+                            Al no tener piedras ni impurezas, permite un acabado
+                            "cara de bebé" o liso perfecto, reduciendo el gasto
+                            en empaste posterior.
+                        </p>
+                        <ul class="check-list">
+                            <li>Cero salitre (Arena Lavada).</li>
+                            <li>Mayor adherencia química.</li>
+                            <li>Menor fisuración.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="text-center">Preguntas Frecuentes</h2>
+            <FAQAccordion faqs={faqs} />
+        </section>
+    </main>
+
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(productSchema)}
+    />
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    .align-center {
+        align-items: center;
+    }
+    .lead {
+        font-size: 1.25rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+    .product-visual img {
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .specs-mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    .spec-mini strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+        text-transform: uppercase;
+    }
+    .spec-mini span {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .mt-4 {
+        margin-top: 3rem;
+    }
+    .p-4 {
+        padding: 2rem;
+    }
+    .flex-gap {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .container-small {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .card-white {
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .check-list {
+        list-style: none;
+        padding: 0;
+    }
+    .check-list li {
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .check-list li::before {
+        content: "✓";
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .product-header {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+</style>

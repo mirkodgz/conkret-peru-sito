@@ -1,0 +1,262 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import "../../styles/global.css";
+
+const posts = await getCollection("blog", ({ data }) => {
+    return data.isDraft !== true;
+});
+
+// Sort by date descending
+const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featuredPost =
+    sortedPosts.find((post) => post.data.featured) || sortedPosts[0];
+const regularPosts = sortedPosts.filter(
+    (post) => post.slug !== featuredPost.slug,
+);
+
+const pageTitle = "Blog de Concreto y Construcción | CONKRET Perú";
+const pageDescription =
+    "Artículos técnicos, guías de rendimiento y consejos expertos sobre concreto premezclado, morteros y construcción en Lima para el 2026.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+    <Header />
+
+    <main class="container py-8">
+        <header class="blog-header text-center mb-12">
+            <h1 class="display-1">Blog Técnico de Construcción</h1>
+            <p class="lead">
+                Soluciones, guías y consejos para optimizar tus proyectos en
+                Lima.
+            </p>
+        </header>
+
+        {
+            featuredPost && (
+                <section class="featured-post mb-12">
+                    <a
+                        href={`/blog/${featuredPost.slug}/`}
+                        class="featured-link"
+                    >
+                        <div class="featured-grid">
+                            <div class="featured-image">
+                                <img
+                                    src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp"
+                                    alt={featuredPost.data.title}
+                                />
+                                <div class="featured-overlay">
+                                    <h2 class="featured-overlay-title">
+                                        {featuredPost.data.title}
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="featured-content">
+                                <span class="badge">Destacado</span>
+                                <p>{featuredPost.data.description}</p>
+                                <div class="meta">
+                                    <span>
+                                        {new Date(
+                                            featuredPost.data.pubDate,
+                                        ).toLocaleDateString("es-PE", {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        })}
+                                    </span>
+                                    <span class="dot" />
+                                    <span>CONKRET</span>
+                                </div>
+                                <span class="btn-primary mt-4 inline-block">
+                                    Saber más
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </section>
+            )
+        }
+
+        <div class="section-divider mb-8">
+            <hr />
+            <span>Últimos Artículos</span>
+        </div>
+
+        <section class="blog-grid">
+            {regularPosts.map((post) => <BlogCard post={post} />)}
+        </section>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<style>
+    .py-8 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    .blog-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+    .blog-header p {
+        font-size: 1.25rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .featured-post {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #eee;
+        transition: transform 0.3s ease;
+    }
+    .featured-post:hover {
+        transform: translateY(-5px);
+    }
+    .featured-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .featured-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+    }
+    .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 400px;
+    }
+    .featured-image {
+        position: relative;
+        overflow: hidden;
+    }
+    .featured-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.6) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    .featured-overlay-title {
+        color: white;
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 900;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        margin: 0;
+    }
+    .featured-content {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #fff;
+    }
+    .featured-content h2 {
+        font-size: 2.5rem;
+        margin: 1rem 0;
+        line-height: 1.2;
+    }
+    .featured-content p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .badge {
+        background: var(--color-primary);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        align-self: flex-start;
+    }
+    .meta {
+        display: flex;
+        align-items: center;
+        color: #888;
+        font-size: 0.9rem;
+    }
+    .dot {
+        width: 4px;
+        height: 4px;
+        background: #ccc;
+        border-radius: 50%;
+        margin: 0 0.8rem;
+    }
+
+    .section-divider {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        color: #888;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    .section-divider hr {
+        flex-grow: 1;
+        border: none;
+        border-top: 2px solid #eee;
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
+
+    @media (max-width: 992px) {
+        .featured-grid {
+            grid-template-columns: 1fr;
+        }
+        .featured-image img {
+            min-height: 300px;
+        }
+        .featured-content {
+            padding: 2rem;
+        }
+        .featured-content h2 {
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .blog-header h1 {
+            font-size: 2.2rem;
+        }
+        .blog-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
