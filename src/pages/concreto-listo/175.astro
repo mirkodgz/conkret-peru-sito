@@ -4,7 +4,6 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import FAQAccordion from "../../components/FAQAccordion.astro";
 import "../../styles/global.css";
 
 const productTitle = "Concreto Listo 175";
@@ -14,18 +13,7 @@ const productDescription =
 const breadcrumbItems = [
     { label: "Productos", href: "/productos/" },
     { label: "Concreto Listo", href: "/concreto-listo/" },
-    { label: "Concreto Listo 175" },
-];
-
-const faqs = [
-    {
-        question: "¿Para qué puede ser usado?",
-        answer: "Es perfecto para cimentaciones simples, pisos peatonales, senderos, banquetas, soleras y trabajos en espacios residenciales donde no se necesiten cargas significativas.",
-    },
-    {
-        question: "¿Es bombeable?",
-        answer: "Sí, nuestras mezclas de 175 kg/cm² pueden ser bombeadas si el acceso lo requiere, facilitando el vaciado en interiores.",
-    },
+    { label: "f'c 175 kg/cm²" },
 ];
 
 // JSON-LD Product Schema
@@ -47,97 +35,135 @@ const productSchema = {
 ---
 
 <Layout
-    title={`${productTitle} | Veredas y Pisos`}
+    title={`${productTitle} | Resistencia 175 kg/cm²`}
     description={productDescription}
 >
     <Header />
 
-    <main class="container">
-        <Breadcrumbs items={breadcrumbItems} />
+    <main class="product-page">
+        <!-- Modern Product Hero -->
+        <section class="section pt-32 pb-20 bg-slate-50">
+            <div class="container">
+                <Breadcrumbs items={breadcrumbItems} />
 
-        <section class="section">
-            <div class="product-header grid-2 align-center">
-                <div class="product-info-text">
-                    <h1>{productTitle}</h1>
-                    <p class="lead">{productDescription}</p>
-
-                    <div class="specs-mini-grid">
-                        <div class="spec-mini">
-                            <strong>Resistencia</strong>
-                            <span>175 kg/cm²</span>
-                        </div>
-                        <div class="spec-mini">
-                            <strong>Uso</strong>
-                            <span>No Estructural</span>
-                        </div>
-                        <div class="spec-mini">
-                            <strong>Agregado</strong>
-                            <span>Huso 67 (1/2" - 3/4")</span>
-                        </div>
-                        <div class="spec-mini">
-                            <strong>Fraguar</strong>
-                            <span>Normal / Retardado</span>
+                <div
+                    class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-12"
+                >
+                    <div class="product-visual animate-fade-right">
+                        <div class="image-wrapper relative group">
+                            <div
+                                class="absolute inset-0 bg-primary/5 rounded-[2.5rem] transform rotate-3 transition-transform group-hover:rotate-6"
+                            >
+                            </div>
+                            <img
+                                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp"
+                                alt={productTitle}
+                                class="relative z-10 w-full rounded-[2.5rem] shadow-2xl border border-white"
+                            />
                         </div>
                     </div>
 
-                    <div class="actions mt-4 flex-gap">
-                        <a
-                            href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar%20Concreto%20175"
-                            class="btn-primary">Solicitar Cotización</a
+                    <div class="product-info animate-fade-left">
+                        <span
+                            class="text-primary font-black uppercase tracking-[0.2em] text-sm block mb-4"
+                            >Mezcla Seca Predosificada</span
                         >
-                    </div>
-                </div>
-                <div class="product-visual">
-                    <img
-                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp"
-                        alt={productTitle}
-                        class="shadow-lg rounded"
-                    />
-                </div>
-            </div>
-        </section>
+                        <h1
+                            class="text-5xl md:text-6xl font-black text-slate-900 mb-6 italic uppercase tracking-tighter"
+                        >
+                            f'c <span class="text-primary">175</span> kg/cm²
+                        </h1>
+                        <p
+                            class="text-lg text-slate-600 leading-relaxed mb-10 font-medium"
+                        >
+                            {productDescription}
+                        </p>
 
-        <section class="section bg-light">
-            <div class="container-small">
-                <h2 class="text-center">Aplicaciones Recomendadas</h2>
-                <div class="grid md:grid-cols-2 gap-8 mt-4">
-                    <div class="card-white p-4">
-                        <h3>¿Para qué puede ser usado?</h3>
-                        <ul class="check-list">
-                            <li>Cimentaciones simples y soleras.</li>
-                            <li>Pisos peatonales y senderos.</li>
-                            <li>Banquetas y trabajos residenciales ligeros.</li>
-                            <li>
-                                Espacios que no requieran cargas significativas.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-white p-4">
-                        <h3>Especificaciones y Rendimiento</h3>
-                        <ul class="check-list">
-                            <li>
-                                <strong>Resistencia:</strong> 175 kg/cm², para baja
-                                intensidad.
-                            </li>
-                            <li>
-                                <strong>Tiempo de fraguado:</strong> Aprox. 24 horas.
-                            </li>
-                            <li>
-                                <strong>Componentes:</strong> Cemento y agregados
-                                calibrados.
-                            </li>
-                            <li>
-                                <strong>Durabilidad:</strong> Diseñado para uso moderado.
-                            </li>
-                        </ul>
+                        <div class="grid grid-cols-2 gap-4 mb-10">
+                            {
+                                [
+                                    { label: "Resistencia", val: "175 kg/cm²" },
+                                    { label: "Uso", val: "No Estructural" },
+                                    { label: "Agregado", val: '1/2" - 3/4"' },
+                                    { label: "Fraguado", val: "Normal" },
+                                ].map((spec) => (
+                                    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                                        <span class="text-slate-400 text-xs font-bold uppercase tracking-wider block mb-1">
+                                            {spec.label}
+                                        </span>
+                                        <span class="text-slate-900 font-black text-lg">
+                                            {spec.val}
+                                        </span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar%20Concreto%20175"
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                COTIZAR ESTE PRODUCTO
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="text-center">Preguntas Frecuentes</h2>
-            <FAQAccordion faqs={faqs} />
+        <!-- Technical Details -->
+        <section class="section py-24 bg-white">
+            <div class="container container-small">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="technical-block">
+                        <h2
+                            class="text-3xl font-black mb-8 italic uppercase tracking-tight line-label"
+                        >
+                            Aplicaciones
+                        </h2>
+                        <ul class="space-y-4">
+                            {
+                                [
+                                    "Cimentaciones simples y soleras.",
+                                    "Pisos peatonales y senderos de bajo tránsito.",
+                                    "Banquetas y trabajos residenciales ligeros.",
+                                    "Rellenos y nivelación de superficies.",
+                                ].map((item) => (
+                                    <li class="flex items-start gap-3 text-slate-700 font-medium">
+                                        <span class="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                                        {item}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="technical-block">
+                        <h2
+                            class="text-3xl font-black mb-8 italic uppercase tracking-tight line-label"
+                        >
+                            Ventas al Por Mayor
+                        </h2>
+                        <div
+                            class="bg-slate-50 p-8 rounded-3xl border border-slate-100"
+                        >
+                            <p class="text-slate-600 mb-6 font-medium">
+                                Abastecemos ferreterías y proyectos de gran
+                                envergadura con precios preferenciales por
+                                volumen.
+                            </p>
+                            <a
+                                href="/cotiza/"
+                                class="text-primary font-black uppercase tracking-wider text-sm hover:underline"
+                                >Solicitar catálogo mayorista →</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -150,90 +176,33 @@ const productSchema = {
 </Layout>
 
 <style>
-    .grid-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-    }
-    .align-center {
-        align-items: center;
-    }
-    .lead {
-        font-size: 1.25rem;
-        color: #444;
-        margin-bottom: 2rem;
-    }
-    .product-visual img {
-        width: 100%;
-        border-radius: 12px;
+    .product-page {
+        font-family: "Spline Sans", sans-serif;
     }
 
-    .specs-mini-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        background: #f9f9f9;
-        padding: 1.5rem;
-        border-radius: 8px;
+    .line-label {
+        position: relative;
+        padding-bottom: 1rem;
     }
-    .spec-mini strong {
-        display: block;
-        font-size: 0.8rem;
-        color: #888;
-        text-transform: uppercase;
-    }
-    .spec-mini span {
-        font-weight: bold;
-        font-size: 1.1rem;
-    }
-
-    .mt-4 {
-        margin-top: 3rem;
-    }
-    .p-4 {
-        padding: 2rem;
-    }
-    .flex-gap {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
+    .line-label::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 2px;
     }
 
     .container-small {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    .card-white {
-        background: white;
-        border-radius: 12px;
-        box-shadow: var(--shadow-sm);
+        max-width: 1100px;
     }
 
-    .check-list {
-        list-style: none;
-        padding: 0;
-    }
-    .check-list li {
-        margin-bottom: 0.8rem;
-        position: relative;
-        padding-left: 1.5rem;
-    }
-    .check-list li::before {
-        content: "✓";
-        color: var(--color-primary);
-        position: absolute;
-        left: 0;
-        font-weight: bold;
-    }
-
+    /* Padding fix for fixed header */
     @media (max-width: 768px) {
-        .grid-2 {
-            grid-template-columns: 1fr;
-        }
-        .product-header {
-            display: flex;
-            flex-direction: column-reverse;
+        .pt-32 {
+            padding-top: 8rem !important;
         }
     }
 </style>

@@ -1,0 +1,504 @@
+---
+interface BlogPost {
+    title: string;
+    description: string;
+    imageUrl: string;
+    imageAlt: string;
+    blogLink: string;
+}
+
+const blogPosts: BlogPost[] = [
+    {
+        title: "¿Qué es el Concreto Premezclado?",
+        description:
+            "Guía completa sobre el concreto premezclado: ventajas, procesos de fabricación y por qué es la mejor elección para tu próxima construcción.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp",
+        imageAlt: "Concreto premezclado Conkret",
+        blogLink: "/blog/que-es-concreto-premezclado/",
+    },
+    {
+        title: "Mortero Fino vs Grueso: ¿Cuál elegir?",
+        description:
+            "Conoce las diferencias técnicas entre el mortero fino y grueso, y aprende cuál es el indicado para cada etapa de tu proyecto de acabados.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp",
+        imageAlt: "Mortero embolsado Conkret",
+        blogLink: "/blog/mortero-fino-vs-grueso/",
+    },
+    {
+        title: "Ventajas del Tarrajeo Premezclado",
+        description:
+            "Descubre cómo el tarrajeo premezclado optimiza los tiempos en obra, reduce el desperdicio y garantiza un acabado profesional superior.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp",
+        imageAlt: "Aplicación de tarrajeo premezclado",
+        blogLink: "/blog/tarrajeo-premezclado-ventajas/",
+    },
+    {
+        title: "Guía Técnica 2026: Concreto y Mortero",
+        description:
+            "Normativas actualizadas y mejores prácticas para el uso de concreto y mortero en Lima. Garantiza seguridad y durabilidad en tus obras.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp",
+        imageAlt: "Guía técnica de concreto 2026",
+        blogLink: "/blog/guia-tecnica-concreto-mortero-2026/",
+    },
+    {
+        title: "Premezclado vs Hecho en Obra",
+        description:
+            "Análisis comparativo de costos y beneficios. Descubre por qué el concreto industrializado es la opción más inteligente para tu presupuesto.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp",
+        imageAlt: "Comparativa concreto premezclado vs obra",
+        blogLink: "/blog/premezclado-vs-tradicional/",
+    },
+    {
+        title: "Ventajas del Concreto Seco en Saco",
+        description:
+            "Olvídate de comprar arena y piedra por separado. Descubre la eficiencia y limpieza de usar mezclas de concreto seco listas para usar.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769563667/ACEA_k4yprr.webp",
+        imageAlt: "Ventajas del concreto seco",
+        blogLink: "/blog/ventajas-concreto-seco-saco/",
+    },
+    {
+        title: "Errores Comunes en el Tarrajeo",
+        description:
+            "Evita fisuras y desprendimientos. Los 5 errores más frecuentes que arruinan tus acabados y cómo solucionarlos profesionalmente.",
+        imageUrl:
+            "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp",
+        imageAlt: "Errores en tarrajeo",
+        blogLink: "/blog/errores-comunes-tarrajeo/",
+    },
+];
+---
+
+<section class="blog-section-home">
+    <div class="container">
+        <div class="header-novedades">
+            <div class="text-group">
+                <h2 class="section-title">Últimas Novedades</h2>
+                <p class="section-subtitle">
+                    Mantente informado con los últimos desarrollos y avances
+                    tecnológicos en construcción.
+                </p>
+            </div>
+            <div class="carousel-controls">
+                <button class="control-btn prev-btn" aria-label="Anterior">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                            points="12 19 5 12 12 5"></polyline></svg
+                    >
+                </button>
+                <button class="control-btn next-btn" aria-label="Siguiente">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                            points="12 5 19 12 12 19"></polyline></svg
+                    >
+                </button>
+            </div>
+        </div>
+
+        <div class="carousel-container">
+            <div class="blog-track">
+                {
+                    blogPosts.map((post) => (
+                        <article class="blog-card-custom">
+                            <div class="card-image-wrapper">
+                                <a href={post.blogLink}>
+                                    <img
+                                        src={post.imageUrl}
+                                        alt={post.imageAlt}
+                                        class="card-img"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </div>
+                            <div class="card-body-custom">
+                                <h3 class="card-title-custom">
+                                    <a href={post.blogLink}>{post.title}</a>
+                                </h3>
+                                <p class="card-desc-custom">
+                                    {post.description}
+                                </p>
+                                <div class="card-footer-custom">
+                                    <a
+                                        href={post.blogLink}
+                                        class="btn-read-more"
+                                    >
+                                        LEER ARTÍCULO <span>→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+
+        <div class="dots-container">
+            {
+                blogPosts.map((_, index) => (
+                    <button
+                        class={`dot-indicator ${index === 0 ? "active" : ""}`}
+                        aria-label={`Ir a diapositiva ${index + 1}`}
+                        data-index={index}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .blog-section-home {
+        background-color: #eeeeee;
+        padding: 6rem 0;
+        overflow: hidden;
+    }
+
+    .header-novedades {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 4rem;
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-family: "Spline Sans", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        color: #111;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .section-subtitle {
+        font-size: 1.25rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0;
+    }
+
+    .carousel-controls {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #111;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .control-btn:hover {
+        background: var(--color-primary, #e40323);
+        transform: scale(1.1);
+    }
+
+    /* Carousel Structure */
+    .carousel-container {
+        overflow: hidden;
+        margin: 0 -15px; /* Compensate for side padding of cards if needed, but mainly for full width feeling */
+        padding: 20px 15px 40px 15px; /* Extra bottom padding for shadow/hover clearance */
+    }
+
+    .blog-track {
+        display: flex;
+        gap: 15px; /* EL GAP QUE PEDISTE */
+        transition: transform 0.5s ease-out;
+    }
+
+    .blog-card-custom {
+        flex: 0 0 100%; /* Mobile default */
+        background: white;
+        border-radius: 40px; /* Bordes premium */
+        overflow: hidden;
+        border: 1px solid #eee;
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        height: auto; /* Let content dictate height, but flex helps equal heights in grid. In flex carousel, we might need fixed height or items-stretch */
+        min-height: 550px; /* Ensure a good height */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (min-width: 768px) {
+        .blog-card-custom {
+            flex: 0 0 calc(50% - 15px / 2); /* 2 items per row */
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .blog-card-custom {
+            flex: 0 0 calc(33.333% - 30px / 3); /* 3 items per row approx logic */
+            /* Actually, gap logic: (100% - (2 * 15px)) / 3 */
+            flex: 0 0 calc((100% - 30px) / 3);
+        }
+    }
+
+    .blog-card-custom:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: #ddd;
+    }
+
+    .card-image-wrapper {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+        background: #eee;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .blog-card-custom:hover .card-img {
+        transform: scale(1.1);
+    }
+
+    /* PADDING MASIVO SIN RECORTES */
+    .card-body-custom {
+        padding: 1.5rem; /* Padding interno grande */
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1.5rem;
+    }
+
+    .card-title-custom {
+        font-family: "Spline Sans", sans-serif;
+        font-weight: 800;
+        font-size: 1.75rem;
+        line-height: 1.2;
+        color: #111;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card-desc-custom {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex: 1;
+    }
+
+    .card-footer-custom {
+        margin-top: auto;
+        padding-top: 2rem;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .btn-read-more {
+        font-family: "Spline Sans", sans-serif;
+        font-weight: 800;
+        color: var(--color-primary, #e40323);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        letter-spacing: 0.1em;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
+
+    .btn-read-more span {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-read-more:hover span {
+        transform: translateX(5px);
+    }
+
+    /* Dots Navigation */
+    .dots-container {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .dot-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .dot-indicator.active {
+        background: var(--color-primary, #e40323);
+        transform: scale(1.2);
+    }
+
+    .dot-indicator:hover {
+        background: #999;
+    }
+
+    .dot-indicator.active:hover {
+        background: var(--color-primary, #e40323);
+    }
+
+    @media (max-width: 1024px) {
+        .card-body-custom {
+            padding: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header-novedades {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* On mobile, hidden dots if too many, or wrap */
+        .dots-container {
+            flex-wrap: wrap;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("astro:page-load", initCarousel);
+    document.addEventListener("DOMContentLoaded", initCarousel);
+
+    function initCarousel() {
+        const track = document.querySelector(".blog-track") as HTMLElement;
+        if (!track) return;
+
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const dots = document.querySelectorAll(".dot-indicator");
+        const cards = document.querySelectorAll(".blog-card-custom");
+
+        if (!cards.length) return;
+
+        let currentIndex = 0;
+        let itemsPerPage = 3;
+        const totalItems = cards.length;
+        const gap = 15;
+
+        const updateDotsVisibility = () => {
+            const maxScrollIndex = totalItems - itemsPerPage;
+            dots.forEach((dot, index) => {
+                if (index > maxScrollIndex) {
+                    (dot as HTMLElement).style.display = "none";
+                } else {
+                    (dot as HTMLElement).style.display = "block";
+                }
+            });
+        };
+
+        const updateCarousel = () => {
+            // Safe clamp
+            const maxScrollIndex = totalItems - itemsPerPage;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxScrollIndex) currentIndex = maxScrollIndex;
+
+            const card = cards[0] as HTMLElement;
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const moveAmount = (cardWidth + gap) * currentIndex;
+                track.style.transform = `translateX(-${moveAmount}px)`;
+            }
+
+            // Update active dot
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle("active", idx === currentIndex);
+            });
+
+            // Update button opacity
+            if (prevBtn)
+                (prevBtn as HTMLButtonElement).style.opacity =
+                    currentIndex === 0 ? "0.5" : "1";
+            if (nextBtn)
+                (nextBtn as HTMLButtonElement).style.opacity =
+                    currentIndex >= maxScrollIndex ? "0.5" : "1";
+        };
+
+        const updateItemsPerPage = () => {
+            if (window.innerWidth < 768) {
+                itemsPerPage = 1;
+            } else if (window.innerWidth < 1024) {
+                itemsPerPage = 2;
+            } else {
+                itemsPerPage = 3;
+            }
+            updateDotsVisibility();
+            updateCarousel();
+        };
+
+        // Event Listeners
+        prevBtn?.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn?.addEventListener("click", () => {
+            const maxScrollIndex = totalItems - itemsPerPage;
+            if (currentIndex < maxScrollIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        window.addEventListener("resize", updateItemsPerPage);
+
+        // Initial setup
+        // Force a small timeout to ensure layout is computed for card width
+        setTimeout(updateItemsPerPage, 100);
+    }
+</script>

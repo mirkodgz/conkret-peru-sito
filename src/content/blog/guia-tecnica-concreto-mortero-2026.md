@@ -3,7 +3,7 @@ title: "Guía Técnica del Concreto y Mortero Premezclado en Lima: Eficiencia y 
 description: "Descubre por qué el concreto premezclado y las mezclas secas son la mejor inversión para la seguridad sísmica y durabilidad de tus obras en Lima para el 2026."
 pubDate: 2026-01-27
 author: "CONKRET"
-image: "https://placehold.co/1200x630/e40323/white?text=Guia+Tecnica+Concreto+2026"
+image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800"
 tags: ["Concreto Premezclado", "Lima", "Construcción", "Guía Técnica"]
 featured: true
 ---

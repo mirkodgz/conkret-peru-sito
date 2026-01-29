@@ -7,6 +7,8 @@
   --color-primary: #e40323;
   --color-primary-dark: #b3021b;
   --color-secondary: #1a1c2e;
+  --font-size-xs: 1rem;
+  --font-size-sm: 1rem;
 }
 
 :root {
@@ -16,8 +18,8 @@
   --color-text: #1a1a1a;
   --color-text-light: #666666;
   --color-bg: #ffffff;
-  --color-bg-light: #f9f9f9;
-  --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-bg-light: #f3f4f6;
+  --font-family-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-family-title: 'Spline Sans', sans-serif;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -67,6 +69,33 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-primary) #f1f1f1;
 }
 
 body {
@@ -77,6 +106,9 @@ body {
   letter-spacing: -0.01em;
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  position: relative;
+  width: 100%;
 }
 
 img {
@@ -99,11 +131,11 @@ h4 {
   line-height: 1.1;
   margin-bottom: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 3rem);
 }
 
 h2 {
@@ -285,6 +317,12 @@ p {
   display: inline-block;
   transition: var(--transition-smooth);
   box-shadow: 0 10px 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 .btn-primary:hover {

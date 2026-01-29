@@ -3,7 +3,7 @@ title: "Mortero fino vs mortero grueso: diferencias y usos"
 description: "¿Usar mortero fino o grueso? Conoce la distinción crucial para acabados y estructuras, y garantiza la calidad profesional de tu obra en Lima."
 pubDate: 2026-01-27
 author: "CONKRET"
-image: "https://placehold.co/1200x630/e40323/white?text=Mortero+Fino+vs+Grueso"
+image: "https://images.unsplash.com/photo-1518391846015-5560b8aaa4a0?auto=format&fit=crop&q=80&w=800"
 tags: ["Mortero", "Acabados", "Construcción", "Consejos"]
 featured: false
 ---

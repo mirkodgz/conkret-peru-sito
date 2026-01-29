@@ -52,26 +52,27 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
 
     <main class="post-page">
         <header class="post-header">
-            <div class="container-small">
-                <Breadcrumbs items={breadcrumbItems} />
-                <div class="header-content mt-4">
-                    <div class="post-meta">
-                        <time>{formattedDate}</time>
-                        <span class="dot"></span>
-                        <span class="author">Por CONKRET Equipo Técnico</span>
-                    </div>
-                    <div class="post-tags mt-2">
-                        {tags.map((tag) => <span class="tag">#{tag}</span>)}
-                    </div>
-                </div>
-            </div>
-            <div class="post-hero-image mt-8">
+            <div class="post-hero-image mt-8 mb-8">
                 <div class="container hero-container">
-                    <img
-                        src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp"
-                        alt={title}
-                        class="hero-img"
-                    />
+                    <div class="hero-carousel">
+                        <img
+                            src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563933/conkret-peru-concreto-listo_dwaisx.webp"
+                            alt={title}
+                            class="hero-img active"
+                        />
+                        <!-- Placeholder Image 1 - Replace URL later -->
+                        <img
+                            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1920"
+                            alt="Construction Site"
+                            class="hero-img"
+                        />
+                        <!-- Placeholder Image 2 - Replace URL later -->
+                        <img
+                            src="https://images.unsplash.com/photo-1518391846015-5560b8aaa4a0?auto=format&fit=crop&q=80&w=1920"
+                            alt="Concrete Work"
+                            class="hero-img"
+                        />
+                    </div>
                     <div class="hero-overlay">
                         <div class="container-small">
                             <h1 class="hero-title">{title}</h1>
@@ -79,30 +80,13 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
                     </div>
                 </div>
             </div>
+            <div class="container-small">
+                <Breadcrumbs items={breadcrumbItems} />
+            </div>
         </header>
 
         <div class="container-article py-12">
             <div class="article-layout">
-                <aside class="article-sidebar">
-                    <div class="sticky-top">
-                        <div class="sidebar-box quote-box">
-                            <p>
-                                "La calidad del concreto es el seguro de vida de
-                                tu edificación."
-                            </p>
-                        </div>
-                        <div class="sidebar-box share-box">
-                            <span class="box-label"
-                                >¿Necesitas una cotización?</span
-                            >
-                            <a
-                                href="https://wa.me/51972047903"
-                                class="btn-whatsapp">Chat con un experto</a
-                            >
-                        </div>
-                    </div>
-                </aside>
-
                 <article class="article-content prose">
                     <Content />
 
@@ -116,7 +100,10 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
                             </p>
                             <a
                                 href="https://wa.me/51972047903?text=Hola,%20vengo%20del%20blog%20y%20quiero%20cotizar"
-                                class="btn-primary">Cotizar por WhatsApp</a
+                                class="btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Cotizar por WhatsApp</a
                             >
                         </div>
                     </div>
@@ -126,26 +113,67 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
 
         {
             relatedPosts.length > 0 && (
-                <section class="related-posts bg-light py-12">
+                <section class="related-posts bg-slate-50 py-32 border-t border-slate-100">
                     <div class="container">
-                        <h2 class="text-center mb-8">Artículos Relacionados</h2>
+                        <div class="text-center mb-20">
+                            <span class="text-primary font-black uppercase tracking-[0.2em] text-sm block mb-4">
+                                Sigue leyendo
+                            </span>
+                            <h2 class="text-4xl md:text-5xl font-black text-slate-900 italic uppercase tracking-tighter">
+                                Artículos{" "}
+                                <span class="text-primary">Relacionados</span>
+                            </h2>
+                        </div>
                         <div class="related-grid">
                             {relatedPosts.map((post) => (
                                 <a
                                     href={`/blog/${post.slug}/`}
-                                    class="related-card-link"
+                                    class="related-card group"
                                 >
-                                    <div class="related-card">
+                                    <div class="card-image-wrapper">
                                         <img
                                             src={post.data.image}
                                             alt={post.data.title}
+                                            class="related-post-img"
                                         />
-                                        <div class="p-4">
-                                            <h3>{post.data.title}</h3>
-                                            <span class="more">
-                                                Leer artículo →
-                                            </span>
+                                        <div class="card-overlay" />
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="flex gap-2 mb-4">
+                                            {post.data.tags
+                                                .slice(0, 2)
+                                                .map((tag) => (
+                                                    <span class="text-[10px] font-black uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-1 rounded">
+                                                        {tag}
+                                                    </span>
+                                                ))}
                                         </div>
+                                        <h3 class="text-xl font-black text-slate-900 group-hover:text-primary transition-colors leading-tight mb-6">
+                                            {post.data.title}
+                                        </h3>
+                                        <span class="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                            Leer más
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="3"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="transition-transform group-hover:translate-x-2"
+                                            >
+                                                <line
+                                                    x1="5"
+                                                    y1="12"
+                                                    x2="19"
+                                                    y2="12"
+                                                />
+                                                <polyline points="12 5 19 12 12 19" />
+                                            </svg>
+                                        </span>
                                     </div>
                                 </a>
                             ))}
@@ -160,6 +188,26 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
     <CTAWhatsApp />
 </Layout>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".hero-carousel .hero-img");
+        if (images.length > 1) {
+            let currentIndex = 0;
+
+            setInterval(() => {
+                // Remove active class from current
+                images[currentIndex].classList.remove("active");
+
+                // Calculate next index
+                currentIndex = (currentIndex + 1) % images.length;
+
+                // Add active class to next
+                images[currentIndex].classList.add("active");
+            }, 3000); // 3 seconds
+        }
+    });
+</script>
+
 <style>
     .post-page {
         background: #fff;
@@ -170,15 +218,16 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
         padding: 0 1.5rem;
     }
     .container-article {
-        max-width: 1100px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 1.5rem;
     }
 
     .post-header {
-        padding-top: 3rem;
+        /* padding-top: 3rem; removed to reduce gap */
         background: #fcfcfc;
         border-bottom: 1px solid #eee;
+        padding-bottom: 2rem; /* Ensure some spacing at the bottom if needed */
     }
     .post-header h1 {
         font-size: 3rem;
@@ -218,13 +267,39 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
         overflow: hidden;
         border-radius: 20px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-    .post-hero-image img {
+        padding: 0 !important;
+        max-width: 1400px !important;
         width: 100%;
-        max-height: 500px;
-        object-fit: cover;
+        margin: 0 auto;
+        height: 500px; /* Fixed height for carousel */
     }
+
+    .hero-carousel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-carousel .hero-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .hero-carousel .hero-img.active {
+        opacity: 1;
+    }
+
     .hero-overlay {
+        z-index: 2; /* Ensure overlay is above carousel */
         position: absolute;
         top: 0;
         left: 0;
@@ -250,35 +325,8 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
     }
 
     .article-layout {
-        display: grid;
-        grid-template-columns: 250px 1fr;
-        gap: 4rem;
-        align-items: start;
-    }
-
-    .article-sidebar {
-        position: sticky;
-        top: 100px;
-    }
-    .sidebar-box {
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        border: 1px solid #eee;
-    }
-    .quote-box {
-        background: #fff1f2;
-        border-left: 4px solid var(--color-primary);
-        font-style: italic;
-        color: #b91c1c;
-    }
-    .box-label {
-        display: block;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: #888;
-        margin-bottom: 0.5rem;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     .btn-whatsapp {
@@ -362,37 +410,65 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
     .related-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 2.5rem;
     }
-    .related-card-link {
-        text-decoration: none;
-        color: inherit;
-    }
+
     .related-card {
         background: white;
-        border-radius: 12px;
+        border-radius: 2rem;
         overflow: hidden;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
         height: 100%;
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.2s;
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid #f1f5f9;
     }
+
     .related-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-12px);
+        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.1);
+        border-color: #fee2e2;
     }
-    .related-card img {
+
+    .card-image-wrapper {
+        position: relative;
+        aspect-ratio: 16/10;
+        overflow: hidden;
+    }
+
+    .related-post-img {
         width: 100%;
-        aspect-ratio: 16/9;
+        height: 100%;
         object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
-    .related-card h3 {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        line-height: 1.4;
+
+    .related-card:hover .related-post-img {
+        transform: scale(1.1);
     }
-    .more {
-        color: var(--color-primary);
-        font-weight: bold;
-        font-size: 0.9rem;
+
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.3) 0%,
+            transparent 50%
+        );
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .related-card:hover .card-overlay {
+        opacity: 1;
+    }
+
+    .card-body {
+        padding: 2.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     @media (max-width: 992px) {
@@ -407,6 +483,7 @@ const formattedDate = new Date(pubDate).toLocaleDateString("es-PE", {
         }
         .related-grid {
             grid-template-columns: 1fr;
+            gap: 2rem;
         }
     }
 </style>

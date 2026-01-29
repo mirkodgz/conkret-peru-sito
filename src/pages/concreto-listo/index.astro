@@ -9,59 +9,40 @@ import "../../styles/global.css";
 
 const products = [
     {
-        title: "CONCRETOS A MEDIDA",
-        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp",
-        link: "/concreto-listo/concreto-a-medida/",
+        title: "Concreto Listo 175",
+        description:
+            "Ideal para veredas, falsos pisos y elementos no estructurales.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp",
+        link: "/concreto-listo/175/",
     },
     {
-        title: "CONCRETO LISTO 210",
+        title: "Concreto Listo 210",
+        description:
+            "Estructural por excelencia para columnas, vigas y losas aligeradas.",
         image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp",
         link: "/concreto-listo/210/",
     },
     {
-        title: "CONCRETO LISTO 175",
-        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp",
-        link: "/concreto-listo/175/",
-    },
-];
-
-const uses = [
-    {
-        title: "Cimentaciones",
-        desc: "Ideal para construir bases sólidas y estables en proyectos residenciales y comerciales.",
-    },
-    {
-        title: "Columnas",
-        desc: "Garantiza resistencia y durabilidad en elementos estructurales verticales.",
-    },
-    {
-        title: "Losas",
-        desc: "Perfecto para crear superficies planas, resistentes y duraderas en pisos y techos.",
-    },
-    {
-        title: "Muros",
-        desc: "Excelente para levantar paredes robustas con acabados de alta calidad.",
+        title: "Concretos a Medida",
+        description:
+            "Diseñamos la resistencia exacta que tu cálculo estructural requiere (f'c 280, 350, etc).",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp",
+        link: "/concreto-listo/",
     },
 ];
 
 const specs = [
     {
-        title: "Dosificación",
-        desc: "Contamos con dosificación 1:4, ideal para toda clase de proyectos.",
+        title: "Dosificación Exacta",
+        desc: "Mezcla industrial 1:3:3 o según diseño, pesada electrónicamente.",
     },
-    { title: "Fácil Aplicación", desc: "Mezcla homogénea. Solo añadir agua." },
-    { title: "Durabilidad", desc: "Diseñado para acabados perfectos en obra." },
+    {
+        title: "Cero Merma",
+        desc: "Aprovechamiento del 100% del material. Sin desperdicios de arena o piedra.",
+    },
     {
         title: "Rendimiento",
-        desc: "Rinde 2 m2 por 1 bolsa de CONKRET con un grosor de 1 cm.",
-    },
-    {
-        title: "Versatilidad",
-        desc: "Ideal para toda clase de acabados y recubrimientos.",
-    },
-    {
-        title: "Calidad Certificada",
-        desc: "Seguimos estrictos controles cumpliendo normas ASTM, NTP, y RNE.",
+        desc: "Aprox. 2 m² por bolsa (40kg) a 1cm de espesor. O 120 bolsas por m³ de concreto.",
     },
 ];
 
@@ -72,262 +53,225 @@ const breadcrumbItems = [
 ---
 
 <Layout
-    title="Concreto Premezclado Precios y Resistencias | CONKRET"
-    description="Suministro de concreto listo de alta resistencia (f'c 175 a 350). Garantizamos dosificación industrial por peso y puntualidad en obra. ¡Cotiza tu m3 ahora!"
+    title="Concreto Premezclado Seco (Concreto Listo) | CONKRET"
+    description="Venta de concreto listo embolsado de alta resistencia (175, 210, 280). Solución práctica para obras en Lima. Ahorra tiempo y asegura la calidad."
 >
     <Header />
 
-    <main class="premium-page">
-        <!-- Modern Hero Section -->
-        <section class="premium-hero">
-            <div class="hero-bg-container">
-                <img
-                    src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564160/concreto_listo_peru_edqzaq.webp"
-                    alt="Concreto Listo CONKRET"
-                    class="hero-parallax-img"
-                    loading="eager"
-                />
-                <div class="hero-vignette"></div>
-            </div>
-            <div class="container hero-content-wrapper relative">
-                <Breadcrumbs items={breadcrumbItems} />
-                <div class="hero-main-text mt-8">
-                    <span class="premium-badge"
-                        >Soluciones de Ingeniería de Vanguardia</span
-                    >
-                    <h1 class="display-title">
-                        CONCRETO <br /><span class="text-primary">LISTO</span>
+    <main>
+        <!-- Category Hero -->
+        <section class="category-hero">
+            <div class="container relative z-10">
+                <div class="max-w-4xl">
+                    <Breadcrumbs items={breadcrumbItems} />
+                    <h1 class="hero-title mt-6">
+                        Concreto <span class="text-primary">Listo</span>
                     </h1>
-                    <p class="hero-subtitle">
-                        La evolución tecnológica del concreto premezclado.
-                        Mezclas industriales predosificadas de máxima fidelidad
-                        estructural para obras de alta exigencia.
+                    <p class="hero-desc">
+                        La revolución del concreto en obra. Mezclas secas
+                        industriales listas para usar. Solo agrega agua y obtén
+                        la resistencia exacta f'c certificada que tu estructura
+                        necesita.
                     </p>
-                    <div class="hero-actions flex gap-6 mt-4">
-                        <a href="#fichas" class="btn-primary-glossy"
-                            >Explorar Fichas Técnicas</a
+                    <div class="flex gap-4 mt-8 flex-wrap">
+                        <a href="#catalogo" class="btn-primary">Ver Productos</a
                         >
-                        <a
-                            href="https://wa.me/51972047903"
-                            class="btn-white-outline">Asesoría Directa</a
+                        <a href="#fichas" class="btn-outline">Fichas Técnicas</a
                         >
                     </div>
                 </div>
             </div>
+
+            <img
+                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564160/concreto_listo_peru_edqzaq.webp"
+                alt="Concreto Listo en Obra"
+                class="hero-bg-img"
+            />
+            <div class="hero-overlay"></div>
         </section>
 
-        <!-- Glassmorphism Quick Nav -->
-        <div class="glass-nav-container">
-            <nav class="glass-pill-nav">
-                <a href="#usos" class="nav-pill">
-                    <span class="pill-icon">🏗️</span> USOS
-                </a>
-                <a href="#rendimiento" class="nav-pill">
-                    <span class="pill-icon">📈</span> RENDIMIENTO
-                </a>
-                <a href="#fichas" class="nav-pill">
-                    <span class="pill-icon">📄</span> FICHAS TÉCNICAS
-                </a>
-            </nav>
-        </div>
-
-        <!-- Premium Products Section -->
-        <section class="section-premium-grid py-32">
+        <!-- Products Grid -->
+        <section id="catalogo" class="section bg-white">
             <div class="container">
-                <div class="section-header-centered mb-20 text-center">
-                    <span class="section-tag-small">Catálogo de Productos</span>
-                    <h2 class="title-xl">
-                        Calidad Certificada en <span class="text-primary"
-                            >Obra</span
-                        >
+                <div class="text-center mb-16">
+                    <span
+                        class="text-primary font-bold tracking-widest uppercase"
+                        >Catálogo</span
+                    >
+                    <h2 class="section-title mt-2 font-black">
+                        Nuestras Resistencias
                     </h2>
-                    <div class="accent-line-center mx-auto"></div>
+                    <div
+                        class="w-24 h-1.5 bg-primary mx-auto mt-6 rounded-full"
+                    >
+                    </div>
                 </div>
 
-                <div class="modern-products-grid">
+                <div class="grid md:grid-cols-3 gap-8">
                     {
-                        products.map((p) => (
-                            <div class="premium-bag-card">
-                                <div class="bag-display">
-                                    <div class="glow-effect" />
-                                    <img
-                                        src={p.image}
-                                        alt={p.title}
-                                        class="floating-bag"
-                                    />
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="bag-title">{p.title}</h3>
-                                    <p class="card-tagline">
-                                        Mezcla seca industrializada
-                                    </p>
-                                    <a href={p.link} class="btn-modern-link">
-                                        Ver especificaciones
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        >
-                                            <>
-                                                <path d="M5 12h14" />
-                                                <path d="m12 5 7 7-7 7" />
-                                            </>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
+                        products.map((product) => (
+                            <ProductCard
+                                title={product.title}
+                                description={product.description}
+                                image={product.image}
+                                link={product.link}
+                            />
                         ))
                     }
                 </div>
             </div>
         </section>
 
-        <!-- High Resistance Banner -->
-        <section class="banner-resistance py-24 bg-light">
-            <div class="container">
-                <div class="flex-banner">
-                    <div class="banner-text">
-                        <span class="section-tag-small">Excelencia Técnica</span
-                        >
-                        <h2 class="title-lg mb-8">
-                            Máximo control en cada saco de <span
-                                class="text-primary">Concreto Listo</span
-                            >.
-                        </h2>
-                        <p class="text-xl-desc mb-10">
-                            CONKRET ofrece concreto listo: una mezcla seca
-                            industrializada con cemento, arena y piedra de
-                            granulometría controlada. Garantizamos calidad,
-                            rapidez y facilidad de uso.
-                        </p>
-                        <div class="premium-accent-box">
-                            <div class="icon-box-primary">🏗️</div>
-                            <div>
-                                <h4 class="font-black">ALTA RESISTENCIA</h4>
-                                <p class="text-sm opacity-70">
-                                    Formulación optimizada para grandes
-                                    tensiones.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-image">
-                        <img
-                            src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564160/concreto_listo_peru_edqzaq.webp"
-                            alt="Calidad Conkret"
-                            class="rounded-premium"
-                        />
-                    </div>
-                </div>
+        <!-- Technical Benefits (Dark Section) -->
+        <section
+            class="section bg-black text-white relative overflow-hidden"
+            style="background-color: #000000;"
+        >
+            <div
+                class="absolute inset-0 opacity-10 pattern-grid pointer-events-none"
+            >
             </div>
-        </section>
-
-        <!-- USOS Section -->
-        <section id="usos" class="section py-32 bg-white">
-            <div class="container">
-                <div class="uses-asymmetric">
-                    <div class="uses-visual">
-                        <img
-                            src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564305/usos_zonvgx.webp"
-                            alt="Usos Versátiles"
-                            class="uses-img-main"
-                        />
-                    </div>
-                    <div class="uses-content">
-                        <span class="section-tag-small"
-                            >Versatilidad Estructural</span
+            <div class="container relative z-10">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="animate-fade-right">
+                        <h2
+                            class="text-4xl md:text-5xl font-black mb-8 leading-tight"
                         >
-                        <h2 class="title-lg mb-12">
-                            USOS DEL <span class="text-primary"
-                                >CONCRETO LISTO</span
-                            >
+                            ¿Por qué elegir <br />
+                            <span style="color: #e40323;">Concreto Listo?</span>
                         </h2>
-                        <div class="uses-premium-grid">
+                        <p
+                            class="text-lg text-slate-300 mb-10 leading-relaxed font-medium"
+                        >
+                            Olvídate de comprar arena, piedra y cemento por
+                            separado. El Concreto Listo CONKRET elimina la
+                            variabilidad de la preparación en obra, garantizando
+                            que cada columna y viga tenga la resistencia real
+                            que calculó el ingeniero.
+                        </p>
+
+                        <div class="space-y-8">
                             {
-                                uses.map((u) => (
-                                    <div class="use-premium-item">
-                                        <div class="use-dot" />
-                                        <h4>{u.title}</h4>
-                                        <p>{u.desc}</p>
+                                specs.map((spec) => (
+                                    <div class="flex gap-6 group">
+                                        <div
+                                            class="w-14 h-14 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg"
+                                            style="background-color: #e40323; box-shadow: 0 10px 20px rgba(228, 3, 35, 0.3);"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="3"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-black text-xl mb-1 text-white tracking-tight">
+                                                {spec.title}
+                                            </h4>
+                                            <p class="text-slate-400 text-base leading-snug">
+                                                {spec.desc}
+                                            </p>
+                                        </div>
                                     </div>
                                 ))
                             }
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Rendimiento Section -->
-        <section
-            id="rendimiento"
-            class="section py-32 bg-dark text-white relative"
-        >
-            <div class="container relative z-10">
-                <h2
-                    class="title-lg text-white mb-16 uppercase italic font-black"
-                >
-                    RENDIMIENTO Y <br /><span class="text-primary"
-                        >ESPECIFICACIONES</span
-                    >
-                </h2>
-                <div class="specs-premium-grid">
-                    {
-                        specs.map((s) => (
-                            <div class="spec-card-minimal">
-                                <h4 class="spec-title">{s.title}</h4>
-                                <div class="spec-divider" />
-                                <p class="spec-desc">{s.desc}</p>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-            <div class="watermark-bg">CONKRET</div>
-        </section>
-
-        <!-- Fichas Técnicas -->
-        <section id="fichas" class="section py-32 bg-gray-50">
-            <div class="container text-center max-w-4xl mx-auto">
-                <span class="section-tag-small">Área de Recursos</span>
-                <h2 class="title-xl mb-4">
-                    DOCUMENTACIÓN <span class="text-primary">TÉCNICA</span>
-                </h2>
-                <p class="text-xl text-muted mb-16">
-                    Detalles que garantizan confianza y precisión en sus planos
-                    estructurales.
-                </p>
-                <div class="premium-download-banner">
-                    <div class="download-icon-box">
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="80"
-                            height="80"
-                            fill="currentColor"
-                            class="text-primary"
-                            ><path
-                                d="M12 16.5l-4.5-4.5h3v-9h3v9h3l-4.5 4.5zm9.75 3h-19.5v3h19.5v-3z"
-                            ></path></svg
+                    <div class="relative animate-fade-left">
+                        <div
+                            class="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full"
                         >
+                        </div>
+                        <div
+                            class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl"
+                        >
+                            <img
+                                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564305/usos_zonvgx.webp"
+                                alt="Aplicación de Concreto Listo"
+                                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                            />
+                        </div>
                     </div>
-                    <div class="download-text">
-                        <h3>Ficha Técnica Concreto Listo 210 kg/cm²</h3>
-                        <p>
-                            Información completa sobre dosificación,
-                            aplicaciones y rendimiento certificado.
-                        </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Sheets Download -->
+        <section id="fichas" class="py-24 bg-white border-t border-slate-100">
+            <div class="container max-w-5xl">
+                <div
+                    class="bg-primary/5 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden"
+                >
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+                    >
+                    </div>
+
+                    <h2
+                        class="text-3xl md:text-4xl font-black mb-6 relative z-10"
+                    >
+                        Documentación Técnica
+                    </h2>
+                    <p
+                        class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto relative z-10 text-center"
+                    >
+                        Descarga las fichas técnicas y hojas de seguridad para
+                        incluir en tu dossier de calidad.
+                    </p>
+
+                    <div
+                        class="flex flex-wrap justify-center gap-4 relative z-10"
+                    >
+                        <a href="#" class="btn-primary flex items-center gap-3">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                ></path><polyline points="7 10 12 15 17 10"
+                                ></polyline><line x1="12" y1="15" x2="12" y2="3"
+                                ></line></svg
+                            >
+                            Ficha Técnica 210 kg/cm²
+                        </a>
                         <a
-                            href="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564653/Ficha-Tecnica-210-nuevo_onbpzn.pdf"
-                            target="_blank"
-                            class="btn-primary-glossy block-mobile"
-                            >DESCARGAR PDF OFICIAL</a
+                            href="#"
+                            class="btn-outline bg-white flex items-center gap-3 hover:bg-slate-50"
+                            style="color: #000; border-color: #e2e8f0;"
                         >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                ></path><polyline points="7 10 12 15 17 10"
+                                ></polyline><line x1="12" y1="15" x2="12" y2="3"
+                                ></line></svg
+                            >
+                            Ficha Técnica 175 kg/cm²
+                        </a>
                     </div>
                 </div>
             </div>
@@ -339,455 +283,77 @@ const breadcrumbItems = [
 </Layout>
 
 <style>
-    /* Premium Reset & Typography */
-    .premium-page {
-        font-family:
-            "Inter",
-            system-ui,
-            -apple-system,
-            sans-serif;
-        color: #1a1c1e;
-        line-height: 1.6;
-    }
-    .text-primary {
-        color: var(--color-primary);
-    }
-    .text-muted {
-        color: #64748b;
-    }
-
-    /* Hero Section */
-    .premium-hero {
-        height: 80vh;
-        min-height: 750px;
+    .category-hero {
         position: relative;
+        padding: 8rem 0; /* Reduced padding for modernization */
+        background-color: #000;
+        color: white;
+        overflow: hidden;
+        min-height: 60vh;
         display: flex;
         align-items: center;
-        background: black;
-        overflow: hidden;
     }
-    .hero-bg-container {
+
+    .hero-bg-img {
         position: absolute;
         inset: 0;
-        z-index: 0;
-    }
-    .hero-parallax-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.75;
-        scale: 1.05;
+        opacity: 0.6;
+        z-index: 0;
     }
-    .hero-vignette {
+
+    .hero-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0.95) 0%,
+            to right,
+            rgba(0, 0, 0, 0.9) 0%,
             rgba(0, 0, 0, 0.4) 100%
         );
-    }
-    .display-title {
-        font-size: clamp(3.5rem, 8vw, 6.5rem);
-        line-height: 0.85;
-        font-weight: 900;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: -3px;
-        margin: 1.5rem 0;
-    }
-    .hero-subtitle {
-        font-size: 1.25rem;
-        color: #cbd5e1;
-        max-width: 650px;
-        line-height: 1.5;
-        margin-bottom: 3.5rem;
-    }
-    .premium-badge {
-        background: rgba(var(--color-primary-rgb, 228, 3, 35), 0.2);
-        color: white;
-        padding: 0.6rem 1.5rem;
-        border-radius: 100px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        border: 1px solid rgba(var(--color-primary-rgb), 0.3);
-        text-transform: uppercase;
+        z-index: 1;
     }
 
-    /* Primary Actions */
-    .btn-primary-glossy {
-        background: var(--color-primary);
-        color: white;
-        padding: 1.25rem 2.8rem;
-        border-radius: 12px;
+    .hero-title {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+        font-family: "Spline Sans", sans-serif;
+    }
+
+    .hero-desc {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+        max-width: 600px;
+    }
+
+    .section-title {
+        font-family: "Spline Sans", sans-serif;
         font-weight: 800;
-        text-decoration: none;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        display: inline-block;
-        box-shadow: 0 10px 30px rgba(var(--color-primary-rgb), 0.3);
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #1a1a1a;
     }
-    .btn-primary-glossy:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(var(--color-primary-rgb), 0.5);
-    }
-    .btn-white-outline {
+
+    .btn-outline {
         border: 2px solid white;
         color: white;
-        padding: 1.25rem 2.8rem;
-        border-radius: 12px;
-        font-weight: 800;
-        text-decoration: none;
-        transition: all 0.3s ease;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 700;
+        transition: all 0.3s;
         display: inline-block;
     }
-    .btn-white-outline:hover {
+
+    .btn-outline:hover {
         background: white;
-        color: black;
-    }
-
-    /* Glass Nav */
-    .glass-nav-container {
-        display: flex;
-        justify-content: center;
-        margin-top: -50px;
-        position: relative;
-        z-index: 100;
-    }
-    .glass-pill-nav {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        padding: 0.6rem;
-        border-radius: 100px;
-        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
-        display: flex;
-        gap: 0.5rem;
-        border: 1px solid white;
-    }
-    .nav-pill {
-        padding: 0.9rem 2.5rem;
-        color: #1e293b;
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 0.85rem;
-        border-radius: 100px;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    .nav-pill:hover {
-        background: #f8fafc;
         color: var(--color-primary);
-        transform: translateY(-2px);
     }
 
-    /* Product Cards */
-    .modern-products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 3rem;
-    }
-    .premium-bag-card {
-        background: white;
-        border-radius: 35px;
-        border: 1px solid #f1f5f9;
-        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        overflow: hidden;
-        text-align: center;
-    }
-    .premium-bag-card:hover {
-        transform: translateY(-20px);
-        box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.1);
-        border-color: #fee2e2;
-    }
-    .bag-display {
-        background: #fcfcfc;
-        height: 350px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-    .floating-bag {
-        max-width: 80%;
-        filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.12));
-        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .premium-bag-card:hover .floating-bag {
-        transform: scale(1.1) rotate(-3deg);
-    }
-    .card-body {
-        padding: 3rem;
-    }
-    .bag-title {
-        font-size: 1.4rem;
-        font-weight: 900;
-        color: #0f172a;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-    }
-    .card-tagline {
-        color: #94a3b8;
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 2rem;
-    }
-    .btn-modern-link {
-        color: var(--color-primary);
-        font-weight: 900;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 0.95rem;
-    }
-
-    /* Banner Resistance */
-    .flex-banner {
-        display: flex;
-        align-items: center;
-        gap: 5rem;
-    }
-    .banner-text {
-        flex: 1.2;
-    }
-    .banner-image {
-        flex: 0.8;
-        position: relative;
-    }
-    .rounded-premium {
-        width: 100%;
-        border-radius: 40px;
-        box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
-    }
-    .text-xl-desc {
-        font-size: 1.4rem;
-        line-height: 1.6;
-        color: #475569;
-        font-weight: 500;
-    }
-    .premium-accent-box {
-        background: white;
-        padding: 2rem;
-        border-radius: 24px;
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-        border: 1px solid #f1f5f9;
-        max-width: 450px;
-    }
-    .icon-box-primary {
-        width: 70px;
-        height: 70px;
-        background: #fff1f2;
-        color: var(--color-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        font-size: 1.7rem;
-    }
-
-    /* USOS Asymmetric */
-    .uses-asymmetric {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-        align-items: center;
-    }
-    .uses-img-main {
-        width: 100%;
-        border-radius: 45px;
-        transform: rotate(-1deg);
-        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
-    }
-    .uses-premium-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
-    }
-    .use-premium-item {
-        transition: transform 0.3s ease;
-    }
-    .use-premium-item:hover {
-        transform: translateX(10px);
-    }
-    .use-dot {
-        width: 25px;
-        height: 4px;
-        background: var(--color-primary);
-        border-radius: 2px;
-        margin-bottom: 1.5rem;
-    }
-    .use-premium-item h4 {
-        font-size: 1.4rem;
-        font-weight: 900;
-        color: #1e293b;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-    }
-    .use-premium-item p {
-        font-size: 0.95rem;
-        color: #64748b;
-        font-weight: 500;
-    }
-
-    /* RENDIMIENTO Section */
-    .bg-dark {
-        background: #0c1116;
-    }
-    .specs-premium-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4rem;
-    }
-    .spec-card-minimal {
-        transition: all 0.3s ease;
-    }
-    .spec-title {
-        color: var(--color-primary);
-        font-size: 0.85rem;
-        font-weight: 900;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-    }
-    .spec-divider {
-        width: 40px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.2);
-        margin-bottom: 1.5rem;
-    }
-    .spec-desc {
-        font-size: 1.1rem;
-        color: #94a3b8;
-        font-weight: 500;
-    }
-    .watermark-bg {
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        font-size: 15rem;
-        font-weight: 900;
-        color: white;
-        opacity: 0.03;
-        line-height: 1;
-        pointer-events: none;
-    }
-
-    /* Fichas Técnicas Banner */
-    .premium-download-banner {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-        text-align: left;
-    }
-    .download-icon-box {
-        background: #fef2f2;
-        padding: 3rem;
-        border-radius: 35px;
-    }
-    .download-text h3 {
-        font-size: 1.8rem;
-        font-weight: 900;
-        color: #0f172a;
-        margin-bottom: 0.75rem;
-    }
-    .download-text p {
-        font-size: 1.1rem;
-        color: #64748b;
-        margin-bottom: 2.5rem;
-    }
-
-    /* Typography Utilities */
-    .title-xl {
-        font-size: 3.8rem;
-        font-weight: 900;
-        line-height: 1.1;
-        color: #0f172a;
-    }
-    .title-lg {
-        font-size: 3rem;
-        font-weight: 900;
-        line-height: 1.15;
-        color: #0f172a;
-    }
-    .section-tag-small {
-        color: var(--color-primary);
-        font-weight: 800;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-        display: block;
-    }
-    .accent-line-center {
-        width: 100px;
-        height: 6px;
-        background: var(--color-primary);
-        border-radius: 10px;
-        margin: 2rem 0;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 1200px) {
-        .uses-asymmetric {
-            grid-template-columns: 1fr;
-            gap: 4rem;
-        }
-        .flex-banner {
-            flex-direction: column;
-            gap: 4rem;
-        }
-        .specs-premium-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    @media (max-width: 768px) {
-        .premium-hero {
-            height: auto;
-            padding: 100px 0 80px;
-        }
-        .display-title {
-            font-size: 3.5rem;
-        }
-        .hero-subtitle {
-            font-size: 1.1rem;
-        }
-        .glass-pill-nav {
-            flex-direction: column;
-            width: 100%;
-            border-radius: 24px;
-            padding: 0.5rem;
-        }
-        .nav-pill {
-            padding: 1rem 2rem;
-            width: 100%;
-            justify-content: center;
-        }
-        .title-xl {
-            font-size: 2.5rem;
-        }
-        .title-lg {
-            font-size: 2.2rem;
-        }
-        .specs-premium-grid {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-        .premium-download-banner {
-            flex-direction: column;
-            text-align: center;
-        }
-        .block-mobile {
-            width: 100%;
-        }
-        .uses-premium-grid {
-            grid-template-columns: 1fr;
-        }
+    .pattern-grid {
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
     }
 </style>

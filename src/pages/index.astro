@@ -8,6 +8,9 @@ import ProjectCard from "../components/ProjectCard.astro";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 import Preloader from "../components/Preloader.astro";
 import FeaturesPremium from "../components/FeaturesPremium";
+import BlogSectionHome from "../components/BlogSectionHome.astro";
+import ModernStats from "../components/ModernStats";
+import TickerSection from "../components/TickerSection.astro";
 import "../styles/global.css";
 
 const faqs = [
@@ -35,7 +38,7 @@ const faqs = [
 
 	<main>
 		<!-- Hero Section -->
-		<section class="hero py-32 bg-light">
+		<section class="hero py-16 bg-light">
 			<div class="container grid md:grid-cols-2 gap-16 items-center">
 				<div class="hero-text animate-fade-up">
 					<h1 class="mb-8 font-black">
@@ -53,7 +56,9 @@ const faqs = [
 						>
 						<a
 							href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar"
-							class="btn-outline">Cotizar Ahora</a
+							class="btn-outline"
+							target="_blank"
+							rel="noopener noreferrer">Cotizar Ahora</a
 						>
 					</div>
 				</div>
@@ -70,80 +75,87 @@ const faqs = [
 			</div>
 		</section>
 
-		<!-- Categories / Products Section -->
-		<section class="section py-32">
-			<div class="container text-center">
-				<h2 class="mb-16">Nuestras Categorías</h2>
+		<!-- Products Section - Replicating WP Layout -->
+		<section class="section py-32 bg-white">
+			<div class="container">
+				<h2
+					class="mb-20 text-center font-black text-5xl md:text-6xl text-slate-900"
+				>
+					Nuestros Productos
+				</h2>
 				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
 					<ProductCard
-						title="Concreto Listo"
-						description="Concreto premezclado de alta resistencia para todo tipo de estructuras y cimentaciones."
+						title="Concreto Listo 175"
+						description="Ideal para veredas, falsos pisos y elementos no estructurales."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp"
+						link="/concreto-listo/175/"
+					/>
+					<ProductCard
+						title="Concreto Listo 210"
+						description="Estructural por excelencia para columnas, vigas y losas aligeradas."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp"
+						link="/concreto-listo/210/"
+					/>
+					<ProductCard
+						title="Concretos a Medida"
+						description="Diseñamos la resistencia exacta que tu cálculo estructural requiere."
 						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp"
 						link="/concreto-listo/"
 					/>
 					<ProductCard
-						title="Morteros"
-						description="Mezclas listas para tarrajeo, asentado de ladrillo y acabados de precisión."
-						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp"
-						link="/mortero/"
+						title="Mortero Fino 1:4"
+						description="Mezcla lista para acabados de tarrajeo lisos y de alta calidad."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769561622/Mortero-Fino-DEF_vlhbv2.webp"
+						link="/mortero/mortero-fino/"
 					/>
 					<ProductCard
-						title="Mezclas Especiales"
-						description="Soluciones técnicas como Shotcrete y concretos de alto desempeño estructural."
-						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp"
-						link="/shotcrete/"
+						title="Mortero Grueso 1:4"
+						description="Para asentado de ladrillo y tarrajeos primarios de gran espesor."
+						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp"
+						link="/mortero/mortero-grueso/"
 					/>
+
+					<!-- Special block: NOS ADAPTAMOS -->
+					<div
+						class="flex flex-col justify-center p-12 text-left rounded-[2rem]"
+					>
+						<h3
+							class="text-primary text-5xl font-black mb-6 leading-tight"
+						>
+							NOS<br />ADAPTAMOS
+						</h3>
+						<div class="w-20 h-1 bg-primary mb-8"></div>
+						<p
+							class="text-slate-600 text-xl font-medium leading-relaxed"
+						>
+							Formulamos mezclas de acuerdo a lo que tu proyecto
+							necesita.
+						</p>
+					</div>
+				</div>
+				<div class="mt-12 text-center" style="margin-top: 5rem;">
+					<a
+						href="/productos/"
+						class="btn-primary text-xl px-12 py-4"
+					>
+						VER TODOS LOS PRODUCTOS
+					</a>
 				</div>
 			</div>
 		</section>
+
+		<TickerSection />
 
 		<!-- Premium Features Section -->
 		<FeaturesPremium client:load />
 
 		<!-- Results / Impact Section -->
-		<section class="impact py-28 bg-dark text-white text-center">
-			<div
-				class="container flex flex-col md:flex-row justify-between items-center gap-16"
-			>
-				<div class="impact-stat">
-					<span class="stat-number">10+</span>
-					<span class="stat-label">Años de Experiencia</span>
-				</div>
-				<div class="impact-stat">
-					<span class="stat-number">500+</span>
-					<span class="stat-label">Proyectos Atendidos</span>
-				</div>
-				<div class="impact-stat">
-					<span class="stat-number">1M+</span>
-					<span class="stat-label">m³ de Concreto</span>
-				</div>
-			</div>
-		</section>
-
-		<!-- Featured Projects -->
-		<section class="section py-32">
-			<div class="container">
-				<h2 class="mb-16 text-center">Proyectos Destacados</h2>
-				<div class="grid md:grid-cols-2 gap-16">
-					<ProjectCard
-						title="Parque Arauco La Molina"
-						description="Suministro de mezclas especiales para la etapa de acabados del Centro Comercial."
-						location="La Molina, Lima"
-						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563449/Proyecto-Parque-Arauco-La-Molina_arjw0h.webp"
-						link="/proyectos/parque-arauco-la-molina/"
-					/>
-					<ProjectCard
-						title="Mega Puerto de Chancay"
-						description="Suministro logístico y especializado para construcciones paralelas en el puerto."
-						location="Chancay, Huaral"
-						image="https://res.cloudinary.com/dskliu1ig/image/upload/v1769563597/CHANCAY_nycsif.webp"
-						link="/proyectos/mega-puerto-chancay/"
-					/>
-				</div>
-			</div>
-		</section>
+		<!-- Modern Results / Impact Section -->
+		<ModernStats client:visible />
 
 		<TestimonialsSection />
+
+		<BlogSectionHome />
 	</main>
 
 	<Footer />
@@ -152,7 +164,7 @@ const faqs = [
 
 <style>
 	.hero {
-		background-color: #f9f9f9;
+		background-color: #eeeeee;
 	}
 	.btn-outline {
 		border: 2px solid var(--color-primary);
@@ -169,34 +181,30 @@ const faqs = [
 	.hero-text h1 {
 		color: #1a1a1a;
 		line-height: 1.1;
-	}
-	.bg-dark {
-		background-color: #0c1116;
-	}
-	.stat-number {
-		display: block;
-		font-size: 4.5rem;
-		font-weight: 900;
-		color: var(--color-primary);
-		line-height: 1;
-		margin-bottom: 0.5rem;
-	}
-	.stat-label {
-		text-transform: uppercase;
-		font-size: 0.85rem;
-		letter-spacing: 2px;
-		font-weight: 700;
-		opacity: 0.7;
+		font-size: 55px;
 	}
 
 	@media (max-width: 992px) {
 		.hero-text h1 {
-			font-size: 2.8rem;
+			font-size: 35px;
 		}
 	}
 	@media (max-width: 768px) {
 		.stat-number {
 			font-size: 3.5rem;
+		}
+		.btn-outline {
+			padding: 0.75rem 1.5rem;
+		}
+		.hero-actions {
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.hero-actions .btn-primary,
+		.hero-actions .btn-outline {
+			width: 100%;
+			text-align: center;
+			padding: 0.75rem 1.5rem;
 		}
 	}
 </style>

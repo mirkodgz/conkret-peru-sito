@@ -1,0 +1,547 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAWhatsApp from "../components/CTAWhatsApp.astro";
+import "../styles/global.css";
+
+const title = "Cotización de Concreto y Mortero | CONKRET Perú";
+const description =
+    "Solicite su presupuesto de concreto listo y mezclas secas sin compromiso. Respuesta rápida y asesoría técnica para su obra.";
+
+// Lista de productos para los selectores
+const productos = [
+    "Concreto Listo 175 kg/cm²",
+    "Concreto Listo 210 kg/cm²",
+    "Concreto Listo 280 kg/cm²",
+    "Mortero Fino 1:4",
+    "Mortero Grueso 1:4",
+    "Shotcrete / Mezclas Especiales",
+];
+---
+
+<Layout title={title} description={description}>
+    <Header />
+
+    <main class="container py-20 mobile-padding-fix">
+        <div class="flex flex-col items-center text-center mb-16">
+            <h1 class="display-title mb-4 text-slate-900">
+                Solicitar <span class="text-primary">Cotización</span>
+            </h1>
+            <p class="text-xl max-w-2xl text-center text-slate-600 block">
+                Complete el formulario detallando los productos y cantidades que
+                requiere. En CONKRET estamos para servirle.
+            </p>
+        </div>
+
+        <div class="cotiza-panel">
+            <form
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                id="cotiza-form"
+            >
+                <!-- Configuración Web3Forms -->
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="767fe437-73a5-452f-be5c-037c67919730"
+                />
+                <input
+                    type="hidden"
+                    name="to_email"
+                    value="developer@conkret.pe"
+                />
+                <input
+                    type="hidden"
+                    name="from_name"
+                    value="COTIZACIÓN WEB CONKRET"
+                />
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="Nueva Solicitud de Cotización Detallada"
+                />
+                <input
+                    type="hidden"
+                    name="logo"
+                    value="https://res.cloudinary.com/dskliu1ig/image/upload/v1769642781/ck-logo-peru_ahpncd.webp"
+                />
+                <input
+                    type="hidden"
+                    name="title"
+                    value="Resumen de Cotización - CONKRET"
+                />
+                <input
+                    type="hidden"
+                    name="header"
+                    value="Se ha recibido una nueva solicitud de cotización detallada desde el sitio web."
+                />
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    class="hidden"
+                    style="display: none;"
+                />
+
+                <!-- SECCIÓN 1: DATOS DEL CLIENTE Y UBICACIÓN -->
+                <div class="form-section">
+                    <h2 class="section-title">1. Datos del Cliente y Obra</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="nombre">Nombre o Razón Social *</label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="Cliente_Nombre"
+                                required
+                                placeholder="Ej: Constructora ABC / Juan Pérez"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="doc">RUC o DNI *</label>
+                            <input
+                                type="text"
+                                id="doc"
+                                name="Cliente_Documento"
+                                required
+                                placeholder="Nº de documento"
+                            />
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="email">Email de Contacto *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="Cliente_Email"
+                                required
+                                placeholder="correo@ejemplo.com"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Teléfono / WhatsApp *</label>
+                            <input
+                                type="tel"
+                                id="tel"
+                                name="Cliente_Teléfono"
+                                required
+                                placeholder="Ej: 987654321"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- UBICACIÓN INTEGRADA -->
+
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label for="dpto">Departamento *</label>
+                            <select
+                                id="dpto"
+                                name="Ubicación_Departamento"
+                                required
+                            >
+                                <option value="">Cargando datos...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prov">Provincia *</label>
+                            <select
+                                id="prov"
+                                name="Ubicación_Provincia"
+                                required
+                            >
+                                <option value="">Seleccione Provincia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dist">Distrito *</label>
+                            <select
+                                id="dist"
+                                name="Ubicación_Distrito"
+                                required
+                            >
+                                <option value="">Seleccione Provincia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2: PRODUCTOS -->
+                <div class="form-section">
+                    <h2 class="section-title">2. Productos a Cotizar</h2>
+                    <p class="helper-text">
+                        Puede seleccionar hasta 4 productos diferentes para su
+                        solicitud.
+                    </p>
+
+                    <div class="products-grid">
+                        {
+                            [1, 2, 3, 4].map((num) => (
+                                <div class="product-item">
+                                    <label>
+                                        Producto {num}{" "}
+                                        {num > 1 ? "(Opcional)" : ""}
+                                    </label>
+                                    <select name={`Producto_${num}`}>
+                                        <option value="">
+                                            -- Seleccione Producto --
+                                        </option>
+                                        {productos.map((p) => (
+                                            <option value={p}>{p}</option>
+                                        ))}
+                                    </select>
+                                    <div class="sub-inputs">
+                                        <div class="sub-group">
+                                            <label>Formato</label>
+                                            <select name={`Formato_${num}`}>
+                                                <option value="Bolsa 40kg">
+                                                    Bolsa 40kg
+                                                </option>
+                                                <option value="Bolsa 20kg">
+                                                    Bolsa 20kg
+                                                </option>
+                                                <option value="Granel / Mezcladora">
+                                                    Granel / m³
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="sub-group">
+                                            <label>Cantidad</label>
+                                            <input
+                                                type="number"
+                                                name={`Cantidad_${num}`}
+                                                min="0"
+                                                placeholder="0"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="msg"
+                            >Comentarios adicionales o especificaciones técnicas</label
+                        >
+                        <textarea
+                            id="msg"
+                            name="Comentarios"
+                            rows="4"
+                            placeholder="Ej: Requiero aditivo acelerante, entrega en piso 5, etc."
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required />
+                        <label for="terms"
+                            >Acepto el tratamiento de mis datos para esta
+                            cotización.</label
+                        >
+                    </div>
+                    <button type="submit" class="btn-primary" id="btn-submit"
+                        >ENVIAR SOLICITUD DE COTIZACIÓN</button
+                    >
+                    <div id="result-message" class="mt-4 text-center font-bold">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <Footer />
+    <CTAWhatsApp />
+</Layout>
+
+<script>
+    // URL de datos de UBIGEO (Fuente pública confiable)
+    const UBIGEO_HOST =
+        "https://raw.githubusercontent.com/joseluisq/ubigeos-peru/master/json";
+
+    const form = document.getElementById("cotiza-form") as HTMLFormElement;
+    const result = document.getElementById("result-message");
+    const btn = document.getElementById("btn-submit") as HTMLButtonElement;
+
+    // Selectores de Ubicación
+    const selDpto = document.getElementById("dpto") as HTMLSelectElement;
+    const selProv = document.getElementById("prov") as HTMLSelectElement; // Ahora será un select
+    const selDist = document.getElementById("dist") as HTMLSelectElement;
+
+    // Cache de datos
+    let departamentos = [];
+    let provincias = {};
+    let distritos = {};
+
+    // Función para cargar datos iniciales
+    async function loadUbigeoData() {
+        try {
+            // Cargar Departamentos
+            const resDep = await fetch(`${UBIGEO_HOST}/departamentos.json`);
+            departamentos = await resDep.json();
+
+            // Llenar select de Departamentos
+            selDpto.innerHTML =
+                '<option value="">Seleccione Departamento</option>';
+            departamentos.forEach((dep) => {
+                const option = document.createElement("option");
+                option.value = dep.id_ubigeo; // Usamos ID para filtrar hijos
+                option.text = dep.nombre_ubigeo;
+                option.dataset.name = dep.nombre_ubigeo;
+                selDpto.appendChild(option);
+            });
+
+            // Precargar Provincias y Distritos (asíncrono para no bloquear)
+            fetch(`${UBIGEO_HOST}/provincias.json`)
+                .then((r) => r.json())
+                .then((d) => (provincias = d));
+            fetch(`${UBIGEO_HOST}/distritos.json`)
+                .then((r) => r.json())
+                .then((d) => (distritos = d));
+        } catch (error) {
+            console.error("Error cargando ubigeo:", error);
+        }
+    }
+
+    // Evento Cambio Departamento
+    selDpto.addEventListener("change", function () {
+        const idDep = this.value;
+        selProv.innerHTML = '<option value="">Seleccione Provincia</option>';
+        selDist.innerHTML = '<option value="">Seleccione Distrito</option>';
+
+        if (idDep && provincias[idDep]) {
+            provincias[idDep].forEach((prov) => {
+                const option = document.createElement("option");
+                option.value = prov.id_ubigeo;
+                option.text = prov.nombre_ubigeo;
+                option.dataset.name = prov.nombre_ubigeo; // Guardar nombre real
+                selProv.appendChild(option);
+            });
+        }
+    });
+
+    // Evento Cambio Provincia
+    selProv.addEventListener("change", function () {
+        const idProv = this.value;
+        selDist.innerHTML = '<option value="">Seleccione Distrito</option>';
+
+        if (idProv && distritos[idProv]) {
+            distritos[idProv].forEach((dist) => {
+                const option = document.createElement("option");
+                option.value = dist.nombre_ubigeo; // El valor final puede ser el nombre
+                option.text = dist.nombre_ubigeo;
+                selDist.appendChild(option);
+            });
+        }
+    });
+
+    // Iniciar carga
+    loadUbigeoData();
+
+    // Manejo del Formulario
+    if (form && result && btn) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Validar ubicación antes de enviar
+            if (
+                selDpto.value === "" ||
+                selProv.value === "" ||
+                selDist.value === ""
+            ) {
+                alert("Por favor complete la ubicación exacta de la obra.");
+                return;
+            }
+
+            // Preparar datos con NOMBRES reales, no IDs
+            const formData = new FormData(form);
+
+            // Reemplazar IDs por Nombres en el objeto a enviar
+            const dptoName = selDpto.options[selDpto.selectedIndex].text;
+            const provName = selProv.options[selProv.selectedIndex].text;
+
+            formData.set("Ubicación_Departamento", dptoName);
+            formData.set("Ubicación_Provincia", provName);
+            // Distrito ya tiene el nombre como value
+
+            btn.disabled = true;
+            btn.innerText = "Procesando...";
+
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: json,
+            })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        result.innerHTML = `<div class="p-4 bg-green-100 text-green-700 rounded-lg">
+                                ¡Solicitud enviada con éxito! <br>
+                                Un asesor se pondrá en contacto pronto.
+                            </div>`;
+                        form.reset();
+                        // Resetear selectores manuales
+                        selProv.innerHTML =
+                            '<option value="">Seleccione Provincia</option>';
+                        selDist.innerHTML =
+                            '<option value="">Seleccione Distrito</option>';
+                    } else {
+                        result.innerText = "Error al enviar. Intente de nuevo.";
+                        result.style.color = "red";
+                    }
+                })
+                .catch(() => {
+                    result.innerText = "Error de conexión.";
+                    result.style.color = "red";
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerText = "ENVIAR SOLICITUD DE COTIZACIÓN";
+                });
+        });
+    }
+</script>
+
+<style>
+    .cotiza-panel {
+        background: #f8fafc;
+        padding: 3rem;
+        border-radius: 2rem;
+        border: 1px solid #e2e8f0;
+        max-width: 1100px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .form-section {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .product-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .sub-inputs {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .form-group label,
+    .product-item label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #475569;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        transition: all 0.3s;
+        background-color: #ffffff;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+    }
+
+    .helper-text {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 1rem;
+    }
+
+    .form-footer {
+        text-align: center;
+    }
+
+    .terms {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .terms input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2,
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+        .cotiza-panel {
+            padding: 1.5rem;
+        }
+        .mobile-padding-fix {
+            padding-top: 9rem !important;
+        }
+    }
+</style>

@@ -4,8 +4,6 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import FAQAccordion from "../../components/FAQAccordion.astro";
-import "../../styles/global.css";
 
 const productTitle = "Mortero Grueso Premezclado";
 const productDescription =
@@ -15,17 +13,6 @@ const breadcrumbItems = [
     { label: "Productos", href: "/productos/" },
     { label: "Mortero", href: "/mortero/" },
     { label: "Mortero Grueso" },
-];
-
-const faqs = [
-    {
-        question: "¿Sirve para tarrajear?",
-        answer: "No se recomienda para el acabado final porque dejará una textura áspera. Es ideal para asentar ladrillo o para 'pañetear' (nivelar) antes del fino.",
-    },
-    {
-        question: "¿Qué proporción tiene?",
-        answer: "Nuestra mezcla industrial cumple con las normas para morteros Tipo P1 o P2 (1:4 o 1:5), asegurando la resistencia a la compresión requerida por la norma E.070.",
-    },
 ];
 
 const productSchema = {
@@ -82,11 +69,15 @@ const productSchema = {
                     <div class="actions mt-4 flex-gap">
                         <a
                             href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20cotizar%20Mortero%20Grueso"
-                            class="btn-primary">Solicitar Cotización</a
+                            class="btn-primary"
+                            target="_blank"
+                            rel="noopener noreferrer">Solicitar Cotización</a
                         >
                         <a
                             href="https://wa.me/51972047903?text=Hola%20CONKRET,%20deseo%20hablar%20con%20un%20asesor"
-                            class="btn-outline">Asesoría Gratuita</a
+                            class="btn-outline"
+                            target="_blank"
+                            rel="noopener noreferrer">Asesoría Gratuita</a
                         >
                     </div>
                 </div>
@@ -119,11 +110,6 @@ const productSchema = {
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="text-center">Preguntas Frecuentes</h2>
-            <FAQAccordion faqs={faqs} />
         </section>
     </main>
 
@@ -165,7 +151,7 @@ const productSchema = {
     }
     .spec-mini strong {
         display: block;
-        font-size: 0.8rem;
+        font-size: 1rem;
         color: #888;
         text-transform: uppercase;
     }

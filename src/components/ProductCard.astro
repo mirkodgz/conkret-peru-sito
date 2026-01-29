@@ -12,7 +12,9 @@ const { title, description, image, link, specs = [] } = Astro.props;
 
 <div class="product-card">
     <div class="product-image">
-        <img src={image} alt={title} loading="lazy" />
+        <a href={link} class="block h-full">
+            <img src={image} alt={title} loading="lazy" />
+        </a>
     </div>
     <div class="product-info">
         <h3>{title}</h3>
@@ -29,10 +31,10 @@ const { title, description, image, link, specs = [] } = Astro.props;
             )
         }
         <div class="product-actions">
-            <a href={link} class="btn-secondary">Ver más</a>
+            <a href={link} class="btn-secondary">Leer más</a>
             <a
                 href={`https://wa.me/51972047903?text=Cotizar%20${title}`}
-                class="btn-whatsapp-small"
+                class="btn-cotizar-red"
                 target="_blank">Cotizar</a
             >
         </div>
@@ -71,13 +73,13 @@ const { title, description, image, link, specs = [] } = Astro.props;
         color: var(--color-primary);
     }
     .product-info p {
-        font-size: 0.95rem;
+        font-size: 1rem;
         margin-bottom: 1rem;
         color: #666;
     }
     .product-specs {
         list-style: none;
-        font-size: 0.85rem;
+        font-size: 1rem;
         margin-bottom: 1.5rem;
     }
     .product-specs li {
@@ -94,19 +96,29 @@ const { title, description, image, link, specs = [] } = Astro.props;
         color: var(--color-primary);
         padding: 0.5rem 1rem;
         border-radius: 4px;
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 400;
         flex: 1;
         text-align: center;
+        transition: all 0.2s;
     }
-    .btn-whatsapp-small {
-        background-color: #25d366;
+    .btn-secondary:hover {
+        background-color: var(--color-primary);
+        color: white;
+    }
+    .btn-cotizar-red {
+        background-color: var(--color-primary);
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 4px;
-        font-size: 0.9rem;
-        font-weight: 400;
+        font-size: 1rem;
+        font-weight: 700;
         flex: 1;
         text-align: center;
+        transition: background-color 0.2s;
+    }
+    .btn-cotizar-red:hover {
+        background-color: var(--color-primary-dark);
+        color: white;
     }
 </style>

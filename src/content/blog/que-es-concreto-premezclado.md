@@ -3,7 +3,7 @@ title: "¿Qué es el concreto premezclado y cuándo usarlo? Guía Técnica 2026 
 description: "Aprende todo sobre el concreto premezclado: definición, tecnología y el momento exacto para su implementación en obras sismorresistentes en Lima."
 pubDate: 2026-01-27
 author: "CONKRET"
-image: "https://placehold.co/1200x630/e40323/white?text=Que+es+Concreto+Premezclado"
+image: "https://images.unsplash.com/photo-1504307651254-35680133c5d3?auto=format&fit=crop&q=80&w=800"
 tags: ["Concreto Premezclado", "Lima", "Ingeniería Civil", "Obras"]
 featured: false
 ---

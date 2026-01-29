@@ -3,7 +3,7 @@ title: "Errores comunes al tarrajear y cómo evitarlos: Guía para Lima"
 description: "¿Paredes fisuradas o con salitre? Conoce los errores más frecuentes al tarrajear y las mejores prácticas para un acabado profesional y duradero."
 pubDate: 2026-01-27
 author: "CONKRET"
-image: "https://placehold.co/1200x630/e40323/white?text=Errores+Comunes+Tarrajeo"
+image: "https://images.unsplash.com/photo-1590483734724-383bcdd4412c?auto=format&fit=crop&q=80&w=800"
 tags: ["Tarrajeo", "Consejos", "Lima", "Acabados"]
 featured: false
 ---
