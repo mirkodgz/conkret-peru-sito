@@ -6,7 +6,7 @@
     <div class="container header-content">
         <a href="/" class="logo">
             <img
-                src="/ck-logo-peru.webp"
+                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769642781/ck-logo-peru_ahpncd.webp"
                 alt="CONKRET Logo"
                 width="150"
                 height="50"
@@ -35,7 +35,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="/concreto-listo/">Concreto Listo</a></li>
                         <li><a href="/mortero/">Mortero</a></li>
-                        <li><a href="/shotcrete/">Mezclas Especiales</a></li>
+                        <li>
+                            <a href="/mezclas-especiales/">Mezclas Especiales</a
+                            >
+                        </li>
                         <li class="divider"></li>
                         <li><a href="/productos/">Ver Todo el Catálogo</a></li>
                     </ul>
@@ -58,119 +61,135 @@
             <span class="line"></span>
         </button>
     </div>
-
-    <!-- Modern Mobile Menu Overlay -->
-    <div class="mobile-nav-panel" id="mobile-nav-panel">
-        <div class="mobile-nav-content">
-            <div class="mobile-nav-header">
-                <img src="/ck-logo-peru.webp" alt="Logo" class="mobile-logo" />
-            </div>
-
-            <nav class="mobile-main-nav">
-                <a href="/">INICIO</a>
-                <div class="mobile-has-submenu">
-                    <div class="mobile-menu-row">
-                        <a href="/productos/" class="mobile-link">PRODUCTOS</a>
-                        <button
-                            class="mobile-submenu-trigger"
-                            aria-label="Toggle Submenu"
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                class="chevron"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2.5"
-                                ><path d="m6 9 6 6 6-6"></path></svg
-                            >
-                        </button>
-                    </div>
-                    <div class="mobile-submenu-list">
-                        <a href="/concreto-listo/">Concreto Listo</a>
-                        <a href="/mortero/">Mortero</a>
-                        <a href="/shotcrete/">Mezclas Especiales</a>
-                        <a href="/productos/" class="see-all"
-                            >Ver Todo el Catálogo</a
-                        >
-                    </div>
-                </div>
-                <a href="/proyectos/">PROYECTOS</a>
-                <a href="/blog/">BLOG</a>
-                <a href="/contacto/">UBIQUENOS</a>
-                <a href="/cotiza/" class="mobile-cta-link">COTIZA</a>
-            </nav>
-
-            <div class="mobile-nav-footer">
-                <p class="footer-tagline">Soluciones de concreto premium</p>
-                <div class="footer-actions">
-                    <a
-                        href="https://wa.me/51972047903"
-                        class="mobile-whatsapp-btn"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span>Contactar por WhatsApp</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 </header>
 
+<!-- Modern Mobile Menu Overlay (Moved outside header for proper fixed positioning) -->
+<div class="mobile-nav-panel" id="mobile-nav-panel">
+    <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+            <img
+                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769642781/ck-logo-peru_ahpncd.webp"
+                alt="Logo"
+                class="mobile-logo"
+            />
+            <button
+                id="mobile-menu-close"
+                class="mobile-menu-close-btn"
+                aria-label="Close Menu"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path d="M18 6 6 18"></path><path d="m6 6 12 12"
+                    ></path></svg
+                >
+            </button>
+        </div>
+
+        <nav class="mobile-main-nav">
+            <a href="/">INICIO</a>
+            <div class="mobile-has-submenu">
+                <div class="mobile-menu-row">
+                    <a href="/productos/" class="mobile-link">PRODUCTOS</a>
+                    <button
+                        class="mobile-submenu-trigger"
+                        aria-label="Toggle Submenu"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="chevron"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            ><path d="m6 9 6 6 6-6"></path></svg
+                        >
+                    </button>
+                </div>
+                <div class="mobile-submenu-list">
+                    <a href="/concreto-listo/">Concreto Listo</a>
+                    <a href="/mortero/">Mortero</a>
+                    <a href="/mezclas-especiales/">Mezclas Especiales</a>
+                    <a href="/productos/" class="see-all"
+                        >Ver Todo el Catálogo</a
+                    >
+                </div>
+            </div>
+            <a href="/proyectos/">PROYECTOS</a>
+            <a href="/blog/">BLOG</a>
+            <a href="/contacto/">UBIQUENOS</a>
+            <a href="/cotiza/" class="mobile-cta-link">COTIZA</a>
+        </nav>
+    </div>
+</div>
+
 <script>
-    const menuToggle = document.getElementById("mobile-menu-toggle");
-    const navPanel = document.getElementById("mobile-nav-panel");
-    // Updated selector to find all triggers (though currently only one)
-    const submenuTriggers = document.querySelectorAll(
-        ".mobile-submenu-trigger",
-    );
-    const submenuLists = document.querySelectorAll(".mobile-submenu-list");
+    document.addEventListener("astro:page-load", () => {
+        const menuToggle = document.getElementById("mobile-menu-toggle");
+        const menuClose = document.getElementById("mobile-menu-close");
+        const navPanel = document.getElementById("mobile-nav-panel");
+        const submenuTriggers = document.querySelectorAll(
+            ".mobile-submenu-trigger",
+        );
 
-    menuToggle?.addEventListener("click", () => {
-        const isOpen = menuToggle.classList.toggle("is-open");
-        navPanel?.classList.toggle("is-open");
-        document.body.style.overflow = isOpen ? "hidden" : "";
-    });
+        const toggleMenu = () => {
+            const isOpen = navPanel?.classList.toggle("is-open");
+            menuToggle?.classList.toggle("is-open");
+            document.body.style.overflow = isOpen ? "hidden" : "";
+        };
 
-    submenuTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", (e) => {
-            // Find the sibling submenu list relative to the clicked trigger
-            // Structure: .mobile-menu-row (contains trigger) -> sibling .mobile-submenu-list
-            const row = trigger.closest(".mobile-menu-row");
-            const list = row?.nextElementSibling as HTMLElement;
+        menuToggle?.addEventListener("click", toggleMenu);
+        menuClose?.addEventListener("click", toggleMenu);
 
-            trigger.classList.toggle("is-active");
-            list?.classList.toggle("is-active");
+        submenuTriggers.forEach((trigger) => {
+            trigger.addEventListener("click", (e) => {
+                const row = trigger.closest(".mobile-menu-row");
+                // @ts-ignore
+                const list = row?.nextElementSibling;
 
-            // Dynamic height for smooth transition
-            if (list) {
-                if (list.classList.contains("is-active")) {
-                    list.style.height = list.scrollHeight + "px";
-                } else {
-                    list.style.height = "0";
+                trigger.classList.toggle("is-active");
+                list?.classList.toggle("is-active");
+
+                if (list) {
+                    if (list.classList.contains("is-active")) {
+                        // @ts-ignore
+                        list.style.height = list.scrollHeight + "px";
+                    } else {
+                        // @ts-ignore
+                        list.style.height = "0";
+                    }
                 }
+            });
+        });
+
+        // Close menu on link click
+        const mobileLinks = navPanel?.querySelectorAll("a");
+        mobileLinks?.forEach((link) => {
+            link.addEventListener("click", () => {
+                navPanel?.classList.remove("is-open");
+                menuToggle?.classList.remove("is-open");
+                document.body.style.overflow = "";
+            });
+        });
+
+        // Header Scroll Effect
+        const header = document.querySelector(".header");
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                header?.classList.add("is-scrolled");
+            } else {
+                header?.classList.remove("is-scrolled");
             }
-        });
-    });
+        };
 
-    // Close menu on link click
-    const mobileLinks = navPanel?.querySelectorAll("a");
-    mobileLinks?.forEach((link) => {
-        link.addEventListener("click", () => {
-            menuToggle?.classList.remove("is-open");
-            navPanel?.classList.remove("is-open");
-            document.body.style.overflow = "";
-        });
-    });
-
-    // Header Scroll Effect
-    const header = document.querySelector(".header");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 20) {
-            header?.classList.add("is-scrolled");
-        } else {
-            header?.classList.remove("is-scrolled");
-        }
+        window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll);
     });
 </script>
 
@@ -349,10 +368,26 @@
     }
     .mobile-nav-header {
         margin-bottom: 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .mobile-logo {
         height: 32px; /* Reduced from 40px */
         width: auto;
+    }
+
+    .mobile-menu-close-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: #f1f1f1;
+        border-radius: 50%;
+        color: #1a1a1a;
+        cursor: pointer;
     }
 
     .mobile-main-nav {
@@ -375,10 +410,11 @@
         font-family: "Spline Sans", sans-serif;
         font-weight: 800;
         color: #1a1a1a;
-        padding: 0.8rem 0;
+        padding: 1rem 0;
         text-transform: uppercase;
         display: block;
-        flex: 1; /* Take available space */
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
     }
 
     .mobile-submenu-trigger {
@@ -467,6 +503,12 @@
     }
 
     @media (max-width: 992px) {
+        .header {
+            padding: 0.5rem 0;
+        }
+        .logo img {
+            height: 36px;
+        }
         .nav,
         .desktop-only {
             display: none;

@@ -7,10 +7,11 @@ import ProductCard from "../components/ProductCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 import Preloader from "../components/Preloader.astro";
-import FeaturesPremium from "../components/FeaturesPremium";
+import FeaturesHome from "../components/FeaturesHome.astro";
 import BlogSectionHome from "../components/BlogSectionHome.astro";
 import ModernStats from "../components/ModernStats";
 import TickerSection from "../components/TickerSection.astro";
+import CTAHome from "../components/CTAHome.astro";
 import "../styles/global.css";
 
 const faqs = [
@@ -147,13 +148,16 @@ const faqs = [
 		<TickerSection />
 
 		<!-- Premium Features Section -->
-		<FeaturesPremium client:load />
+		<FeaturesHome />
 
 		<!-- Results / Impact Section -->
 		<!-- Modern Results / Impact Section -->
 		<ModernStats client:visible />
 
 		<TestimonialsSection />
+
+		<!-- New CTA Section -->
+		<CTAHome />
 
 		<BlogSectionHome />
 	</main>

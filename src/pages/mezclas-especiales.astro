@@ -1,60 +1,60 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
-import ProductCard from "../../components/ProductCard.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import "../../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAWhatsApp from "../components/CTAWhatsApp.astro";
+import ProductCard from "../components/ProductCard.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import "../styles/global.css";
 
 const products = [
     {
-        title: "Concreto Listo 175",
+        title: "Shotcrete Vía Húmeda",
         description:
-            "Ideal para veredas, falsos pisos y elementos no estructurales.",
-        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp",
-        link: "/concreto-listo/175/",
+            "Mezcla lista con aditivos incorporados. Ideal para grandes volúmenes en minería y túneles. Menor rebote y mayor calidad.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp",
+        link: "#",
     },
     {
-        title: "Concreto Listo 210",
+        title: "Shotcrete Vía Seca",
         description:
-            "Estructural por excelencia para columnas, vigas y losas aligeradas.",
-        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp",
-        link: "/concreto-listo/210/",
+            "Mezcla seca predosificada. El agua se añade en la boquilla. Perfecto para reparaciones puntuales y distancias largas.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp",
+        link: "#",
     },
     {
-        title: "Concretos a Medida",
+        title: "Concreto Autocompactante",
         description:
-            "Diseñamos la resistencia exacta que tu cálculo estructural requiere (f'c 280, 350, etc).",
-        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561918/concreto-a-medida_s7oyof.webp",
-        link: "/concreto-listo/",
+            "Fluidez extrema sin segregación. Llena encofrados complejos sin necesidad de vibrado.",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp",
+        link: "#",
     },
 ];
 
 const specs = [
     {
-        title: "Dosificación Exacta",
-        desc: "Mezcla industrial 1:3:3 o según diseño, pesada electrónicamente.",
+        title: "Sostenimiento Inmediato",
+        desc: "Fraguado ultra rápido para estabilizar rocas y taludes en minutos.",
     },
     {
-        title: "Cero Merma",
-        desc: "Aprovechamiento del 100% del material. Sin desperdicios de arena o piedra.",
+        title: "Adherencia Total",
+        desc: "Se proyecta a alta velocidad compactándose contra la superficie sin encofrado.",
     },
     {
-        title: "Rendimiento",
-        desc: "Aprox. 2 m² por bolsa (40kg) a 1cm de espesor. O 120 bolsas por m³ de concreto.",
+        title: "Versatilidad",
+        desc: "Aplicable en superficies irregulares, curvas y sobre cabeza en túneles.",
     },
 ];
 
 const breadcrumbItems = [
     { label: "Productos", href: "/productos/" },
-    { label: "Concreto Listo" },
+    { label: "Mezclas Especiales" },
 ];
 ---
 
 <Layout
-    title="Concreto Premezclado Seco (Concreto Listo) | CONKRET"
-    description="Venta de concreto listo embolsado de alta resistencia (175, 210, 280). Solución práctica para obras en Lima. Ahorra tiempo y asegura la calidad."
+    title="Shotcrete y Mezclas Especiales | CONKRET"
+    description="Soluciones de Shotcrete para sostenimiento de túneles, estabilización de taludes y estructuras complejas."
 >
     <Header />
 
@@ -65,30 +65,30 @@ const breadcrumbItems = [
                 <div class="max-w-4xl">
                     <Breadcrumbs items={breadcrumbItems} />
                     <h1 class="hero-title mt-6">
-                        Concreto
-                        <span
+                        Mezclas <span
                             class="text-primary"
-                            style="color: #e40323 !important;">Listo</span
+                            style="color: #e40323 !important;">Especiales</span
                         >
                     </h1>
                     <p class="hero-desc">
-                        La revolución del concreto en obra. Mezclas secas
-                        industriales listas para usar. Solo agrega agua y obtén
-                        la resistencia exacta f'c certificada que tu estructura
-                        necesita.
+                        Tecnología de concreto proyectado (Shotcrete) y diseños
+                        especiales para minería e infraestructura crítica. Alta
+                        presión, máxima seguridad.
                     </p>
                     <div class="flex gap-4 mt-8 flex-wrap">
-                        <a href="#catalogo" class="btn-primary">Ver Productos</a
+                        <a href="#catalogo" class="btn-primary"
+                            >Ver Soluciones</a
                         >
-                        <a href="#fichas" class="btn-outline">Fichas Técnicas</a
+                        <a href="#contacto" class="btn-outline"
+                            >Soporte Técnico</a
                         >
                     </div>
                 </div>
             </div>
 
             <img
-                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564160/concreto_listo_peru_edqzaq.webp"
-                alt="Concreto Listo en Obra"
+                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp"
+                alt="Shotcrete en mina"
                 class="hero-bg-img"
             />
             <div class="hero-overlay"></div>
@@ -100,10 +100,10 @@ const breadcrumbItems = [
                 <div class="text-center mb-16">
                     <span
                         class="text-primary font-bold tracking-widest uppercase"
-                        >Catálogo</span
+                        >Alta Ingeniería</span
                     >
                     <h2 class="section-title mt-2 font-black">
-                        Nuestras Resistencias
+                        Nuestras Soluciones
                     </h2>
                     <div
                         class="w-24 h-1.5 bg-primary mx-auto mt-6 rounded-full"
@@ -141,17 +141,14 @@ const breadcrumbItems = [
                         <h2
                             class="text-4xl md:text-5xl font-black mb-8 leading-tight"
                         >
-                            ¿Por qué elegir <br />
-                            <span style="color: #e40323;">Concreto Listo?</span>
+                            Tecnología <br />
+                            <span style="color: #e40323;">Shotcrete</span>
                         </h2>
                         <p
                             class="text-lg text-slate-300 mb-10 leading-relaxed font-medium"
                         >
-                            Olvídate de comprar arena, piedra y cemento por
-                            separado. El Concreto Listo CONKRET elimina la
-                            variabilidad de la preparación en obra, garantizando
-                            que cada columna y viga tenga la resistencia real
-                            que calculó el ingeniero.
+                            El sistema de sostenimiento más eficiente para
+                            minería subterránea y obras civiles complejas.
                         </p>
 
                         <div class="space-y-8">
@@ -198,8 +195,8 @@ const breadcrumbItems = [
                             class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl"
                         >
                             <img
-                                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564305/usos_zonvgx.webp"
-                                alt="Aplicación de Concreto Listo"
+                                src="https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp"
+                                alt="Aplicación de Shotcrete"
                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                             />
                         </div>
@@ -209,7 +206,7 @@ const breadcrumbItems = [
         </section>
 
         <!-- Technical Sheets Download -->
-        <section id="fichas" class="py-24 bg-white border-t border-slate-100">
+        <section id="contacto" class="py-24 bg-white border-t border-slate-100">
             <div class="container max-w-5xl">
                 <div
                     class="p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center"
@@ -217,65 +214,24 @@ const breadcrumbItems = [
                     <h2
                         class="text-3xl md:text-4xl font-black mb-6 relative z-10"
                     >
-                        Documentación Técnica
+                        ¿Requiere un Diseño Especial?
                     </h2>
                     <p
                         class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto relative z-10"
                         style="text-align: center !important;"
                     >
-                        Descarga las fichas técnicas y hojas de seguridad para
-                        incluir en tu dossier de calidad.
+                        Nuestro laboratorio de calidad puede diseñar la mezcla
+                        exacta para su proyecto (f'c, slump, fraguado).
                     </p>
 
                     <div
                         class="flex flex-wrap justify-center gap-4 relative z-10"
                     >
                         <a
-                            href="https://res.cloudinary.com/dskliu1ig/image/upload/v1769564653/Ficha-Tecnica-210-nuevo_onbpzn.pdf"
+                            href="https://wa.me/51972047903"
                             class="btn-primary flex items-center gap-3"
-                            target="_blank"
-                            rel="noopener noreferrer"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                ><path
-                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                                ></path><polyline points="7 10 12 15 17 10"
-                                ></polyline><line x1="12" y1="15" x2="12" y2="3"
-                                ></line></svg
-                            >
-                            Ficha Técnica 210 kg/cm²
-                        </a>
-                        <a
-                            href="#"
-                            class="btn-outline bg-white flex items-center gap-3 hover:bg-slate-50"
-                            style="color: #000; border-color: #e2e8f0;"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                ><path
-                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                                ></path><polyline points="7 10 12 15 17 10"
-                                ></polyline><line x1="12" y1="15" x2="12" y2="3"
-                                ></line></svg
-                            >
-                            Ficha Técnica 175 kg/cm²
+                            Consultar con Ingeniería
                         </a>
                     </div>
                 </div>
@@ -290,7 +246,7 @@ const breadcrumbItems = [
 <style>
     .category-hero {
         position: relative;
-        padding: 8rem 0; /* Reduced padding for modernization */
+        padding: 8rem 0;
         background-color: #000;
         color: white;
         overflow: hidden;

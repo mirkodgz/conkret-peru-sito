@@ -4,115 +4,294 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import CTAWhatsApp from "../../components/CTAWhatsApp.astro";
 import ProductCard from "../../components/ProductCard.astro";
-import FAQAccordion from "../../components/FAQAccordion.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import "../../styles/global.css";
 
-const products = [
+const concretoProducts = [
     {
         title: "Concreto Listo 175",
         description:
-            "Concreto premezclado de resistencia básica (175 kg/cm²). Ideal para veredas, falsos pisos y elementos no estructurales.",
+            "Ideal para veredas, falsos pisos y elementos no estructurales.",
         link: "/concreto-listo/175/",
         image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561858/175-concreto_mbfli2.webp",
     },
     {
         title: "Concreto Listo 210",
         description:
-            "Resistencia media (210 kg/cm²) para estructuras exigentes. Ideal para vigas, columnas y losas de viviendas.",
+            "Estructural por excelencia para columnas, vigas y losas aligeradas.",
         link: "/concreto-listo/210/",
         image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769561984/210-concreto_ulncun.webp",
     },
+];
+
+const mortarProducts = [
     {
-        title: "Mezcla Lista para Tarrajeo",
+        title: "Mortero Grueso",
         description:
-            "Asegura acabados uniformes y reduce el desperdicio en muros.",
-        link: "/mortero/tarrajeo/",
+            "Solución industrial para tarrajeos primarios y nivelación.",
+        link: "/mortero/mortero-grueso/",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp",
     },
     {
-        title: "Súper Mortero",
+        title: "Mortero Fino",
         description:
-            "Mezcla de alta adherencia para asentado de ladrillo estructural.",
-        link: "/mortero/supermortero/",
+            "Mezcla seca de granulometría fina para acabados perfectos.",
+        link: "/mortero/mortero-fino/",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562141/1-4-mortero-grueso_odjo1y.webp",
     },
 ];
 
-const faqs = [
+const specialProducts = [
     {
-        question: "¿Cómo se calcula el rendimiento del concreto?",
-        answer: "El rendimiento depende del volumen del elemento y el desperdicio estimado. Visite nuestra página de rendimiento para más detalles.",
+        title: "Shotcrete Vía Húmeda",
+        description:
+            "Concreto proyectado para túneles y estabilización de taludes.",
+        link: "/mezclas-especiales/",
+        image: "https://res.cloudinary.com/dskliu1ig/image/upload/v1769562601/mezclas-_ehjph8.webp",
     },
-    {
-        question: "¿Cuál es el precio del m3 de concreto?",
-        answer: "El precio varía según la resistencia y la ubicación de la obra. Contáctenos para una cotización exacta.",
-    },
+];
+
+const breadcrumbItems = [
+    { label: "Inicio", href: "/" },
+    { label: "Catálogo Completo" },
 ];
 ---
 
-<Layout title="Productos de Concreto y Mortero | Mezclas Listas">
+<Layout
+    title="Catálogo Completo de Productos | CONKRET"
+    description="Explore nuestra gama completa de concreto listo, morteros y mezclas especiales para la construcción."
+>
     <Header />
 
-    <main class="container py-5">
-        <h1 class="page-title">Catálogo de Productos CONKRET</h1>
-        <p class="lead">
-            Soluciones industriales para construcción: Mezclas secas y concreto
-            listo dosificado con precisión.
-        </p>
-
-        <section class="product-categories-listing">
-            <div class="category-block">
-                <h2>Concreto Listo (Premezclado)</h2>
-                <p>
-                    Concreto dosificado en planta con agregados seleccionados.
-                    Garantiza la resistencia estructural de tu obra.
-                </p>
-                <div class="product-grid">
-                    {
-                        products
-                            .slice(0, 2)
-                            .map((p) => (
-                                <ProductCard
-                                    title={p.title}
-                                    description={p.description}
-                                    image={
-                                        p.image ||
-                                        `https://placehold.co/600x400/e40323/white?text=${p.title.replace(/ /g, "+")}`
-                                    }
-                                    link={p.link}
-                                />
-                            ))
-                    }
+    <main>
+        <!-- Category Hero -->
+        <section class="category-hero">
+            <div class="container relative z-10">
+                <div class="max-w-4xl">
+                    <Breadcrumbs items={breadcrumbItems} />
+                    <h1 class="hero-title mt-6">
+                        Catálogo <span
+                            class="text-primary"
+                            style="color: #e40323 !important;">Completo</span
+                        >
+                    </h1>
+                    <p class="hero-desc">
+                        Explore todas nuestras soluciones industriales. Desde
+                        concretos estructurales hasta morteros de acabado fino.
+                        Calidad garantizada en cada bolsa.
+                    </p>
+                    <div class="flex gap-4 mt-8 flex-wrap">
+                        <a href="#concreto" class="btn-primary">Ver Concretos</a
+                        >
+                        <a href="#mortero" class="btn-outline">Ver Morteros</a>
+                    </div>
                 </div>
-                <a href="/concreto-listo/" class="view-all"
-                    >Ver todo en Concreto &rarr;</a
-                >
             </div>
 
-            <div class="category-block">
-                <h2>Morteros y Mezclas Secas</h2>
-                <p>
-                    Ahorra tiempo y reduce mermas con nuestras mezclas ensacadas
-                    listas para usar.
-                </p>
-                <div class="product-grid">
+            <img
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=2070"
+                alt="Catálogo CONKRET"
+                class="hero-bg-img"
+            />
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Concreto Section -->
+        <section id="concreto" class="section bg-white">
+            <div class="container">
+                <div
+                    class="flex items-center justify-between mb-12 flex-wrap gap-4"
+                >
+                    <div>
+                        <span
+                            class="text-primary font-bold tracking-widest uppercase text-sm block mb-1"
+                            >Estructurales</span
+                        >
+                        <h2
+                            class="text-3xl md:text-4xl font-black text-slate-900"
+                        >
+                            Concreto Listo
+                        </h2>
+                    </div>
+                    <a
+                        href="/concreto-listo/"
+                        class="group flex items-center gap-2 font-bold text-slate-900 hover:text-primary transition-colors"
+                    >
+                        Ver categoría completa
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-transform group-hover:translate-x-1"
+                            ><line x1="5" y1="12" x2="19" y2="12"
+                            ></line><polyline points="12 5 19 12 12 19"
+                            ></polyline></svg
+                        >
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                     {
-                        products
-                            .slice(2, 4)
-                            .map((p) => (
-                                <ProductCard
-                                    title={p.title}
-                                    description={p.description}
-                                    image={
-                                        p.image ||
-                                        `https://placehold.co/600x400/e40323/white?text=${p.title.replace(/ /g, "+")}`
-                                    }
-                                    link={p.link}
-                                />
-                            ))
+                        concretoProducts.map((product) => (
+                            <ProductCard
+                                title={product.title}
+                                description={product.description}
+                                image={product.image}
+                                link={product.link}
+                            />
+                        ))
                     }
                 </div>
-                <a href="/mortero/" class="view-all"
-                    >Ver todo en Morteros &rarr;</a
+            </div>
+        </section>
+
+        <!-- Mortero Section -->
+        <section
+            id="mortero"
+            class="section bg-slate-50 border-y border-slate-100 py-24"
+        >
+            <div class="container">
+                <div
+                    class="flex items-center justify-between mb-12 flex-wrap gap-4"
                 >
+                    <div>
+                        <span
+                            class="text-primary font-bold tracking-widest uppercase text-sm block mb-1"
+                            >Acabados y Asentado</span
+                        >
+                        <h2
+                            class="text-3xl md:text-4xl font-black text-slate-900"
+                        >
+                            Morteros
+                        </h2>
+                    </div>
+                    <a
+                        href="/mortero/"
+                        class="group flex items-center gap-2 font-bold text-slate-900 hover:text-primary transition-colors"
+                    >
+                        Ver categoría completa
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-transform group-hover:translate-x-1"
+                            ><line x1="5" y1="12" x2="19" y2="12"
+                            ></line><polyline points="12 5 19 12 12 19"
+                            ></polyline></svg
+                        >
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        mortarProducts.map((product) => (
+                            <ProductCard
+                                title={product.title}
+                                description={product.description}
+                                image={product.image}
+                                link={product.link}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Section -->
+        <section id="especiales" class="section bg-white py-24">
+            <div class="container">
+                <div
+                    class="flex items-center justify-between mb-12 flex-wrap gap-4"
+                >
+                    <div>
+                        <span
+                            class="text-primary font-bold tracking-widest uppercase text-sm block mb-1"
+                            >Alta Ingeniería</span
+                        >
+                        <h2
+                            class="text-3xl md:text-4xl font-black text-slate-900"
+                        >
+                            Mezclas Especiales
+                        </h2>
+                    </div>
+                    <a
+                        href="/mezclas-especiales/"
+                        class="group flex items-center gap-2 font-bold text-slate-900 hover:text-primary transition-colors"
+                    >
+                        Ver categoría completa
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-transform group-hover:translate-x-1"
+                            ><line x1="5" y1="12" x2="19" y2="12"
+                            ></line><polyline points="12 5 19 12 12 19"
+                            ></polyline></svg
+                        >
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        specialProducts.map((product) => (
+                            <ProductCard
+                                title={product.title}
+                                description={product.description}
+                                image={product.image}
+                                link={product.link}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Download -->
+        <section class="py-24 bg-black text-white text-center">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl font-black mb-6">
+                    ¿Necesita el Catálogo en PDF?
+                </h2>
+                <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+                    Descargue nuestro brochure corporativo con todas las
+                    especificaciones técnicas detalladas.
+                </p>
+                <a href="#" class="btn-primary inline-flex items-center gap-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                        ></path><polyline points="7 10 12 15 17 10"
+                        ></polyline><line x1="12" y1="15" x2="12" y2="3"
+                        ></line></svg
+                    >
+                    Descargar Brochure 2026
+                </a>
             </div>
         </section>
     </main>
@@ -122,56 +301,65 @@ const faqs = [
 </Layout>
 
 <style>
-    .py-5 {
-        padding: 4rem 0;
-    }
-    .page-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-    .lead {
-        font-size: 1.25rem;
-        color: #666;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto 4rem;
+    .category-hero {
+        position: relative;
+        padding: 8rem 0;
+        background-color: #000;
+        color: white;
+        overflow: hidden;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
     }
 
-    .category-block {
-        margin-bottom: 6rem;
+    .hero-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        z-index: 0;
     }
-    .category-block h2 {
-        font-size: 2rem;
-        border-left: 5px solid var(--color-primary);
-        padding-left: 1rem;
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 900;
+        line-height: 1;
         margin-bottom: 1.5rem;
-    }
-    .category-block p {
-        font-size: 1.1rem;
-        color: #444;
-        margin-bottom: 2rem;
+        font-family: "Spline Sans", sans-serif;
     }
 
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
+    .hero-desc {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+        max-width: 600px;
     }
 
-    .view-all {
-        font-weight: bold;
+    .btn-outline {
+        border: 2px solid white;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 700;
+        transition: all 0.3s;
+        display: inline-block;
+    }
+
+    .btn-outline:hover {
+        background: white;
         color: var(--color-primary);
-    }
-
-    .faqs-section {
-        background: #f9f9f9;
-        padding: 4rem 2rem;
-        border-radius: 12px;
-        margin-top: 4rem;
-    }
-    .text-center {
-        text-align: center;
     }
 </style>

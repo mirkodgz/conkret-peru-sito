@@ -61,5 +61,40 @@ const siteTitle = `${title} | CONKRET`;
 	</head>
 	<body>
 		<slot />
+		<script>
+			// Global Scroll Animation Observer
+			const observerOptions = {
+				root: null,
+				rootMargin: "0px",
+				threshold: 0.1,
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const el = entry.target as HTMLElement;
+						const animation =
+							el.dataset.animation || "animate-fade-up";
+						const delay = el.dataset.delay || "0";
+
+						setTimeout(() => {
+							el.classList.remove("opacity-0", "translate-y-8");
+							el.classList.add(animation);
+						}, parseInt(delay));
+
+						observer.unobserve(el);
+					}
+				});
+			}, observerOptions);
+
+			document.addEventListener("astro:page-load", () => {
+				const elements = document.querySelectorAll(".reveal-on-scroll");
+				elements.forEach((el) => observer.observe(el));
+			});
+
+			// Fallback for initial load if view transitions aren't fully intercepting
+			const elements = document.querySelectorAll(".reveal-on-scroll");
+			elements.forEach((el) => observer.observe(el));
+		</script>
 	</body>
 </html>

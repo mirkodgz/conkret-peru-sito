@@ -490,7 +490,11 @@ const description =
         box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
+        .grid-2,
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
         .contact-grid {
             grid-template-columns: 1fr;
             gap: 6rem;
@@ -499,6 +503,12 @@ const description =
         .experience-badge {
             bottom: 1rem;
             right: 1rem;
+        }
+
+        /* Fix header overlap on mobile */
+        main.container {
+            padding-top: 8rem !important;
+            padding-bottom: 4rem !important;
         }
     }
 
